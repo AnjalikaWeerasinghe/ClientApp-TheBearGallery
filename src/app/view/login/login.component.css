@@ -7,17 +7,28 @@ mat-card {
 
 mat-card-header {
   /*background: #003300;*/
-  background: #6eab47;
+  background: none;
+}
+
+#bgimage{
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+
+#logo{
+  text-align: left;
+  width: 25%; height: 25%;
 }
 
 mat-card-title img {
   width: 26.5rem;
   height: 100%;
-  text-align: center;
+  text-align: left;
 }
 
 mat-card-title p {
-  color: white;
+  color: black;
   text-align: center;
 }
 
@@ -38,11 +49,15 @@ button {
 }
 
 button[btn-a] {
-  background: darkolivegreen !important;
+  background: palevioletred !important;
 
 }
 
 button[btn-b] {
-  background: #355E3B !important;
+  background: purple !important;
+}
+
+#usename , #passwd{
+  background-color: white;
 }
 
