@@ -1,41 +1,45 @@
 <mat-grid-list [cols]="8" rowHeight="8rem">
   <mat-grid-tile [colspan]="8" [rowspan]="6">
 
-    <mat-card id="bgimage" style="background-image: url('assets/fx3f1iml.png')">
-      <mat-card-header>
-        <mat-card-title>
-          <section>
-            <p><img id="logo" src="/assets/bearlogo.png"></p>
-            <p>World's First Demo Soft Toy Factory</p>
-          </section>
-          <section>
-            <p>System Login</p>
-          </section>
-        </mat-card-title>
-      </mat-card-header>
+    <div class="background-container">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <p><img id="logoimg" src="/assets/bearlogo (2).png"></p>
+            <p class="para2">User Login</p>
+          </mat-card-title>
+        </mat-card-header>
 
-      <mat-card-content>
+        <mat-card-content>
+          <form [formGroup]="loginform">
 
-        <form [formGroup]="loginform">
+            <mat-form-field appearance="outline">
+              <mat-label><mat-icon>account_circle</mat-icon></mat-label>
+              <mat-label>UserName</mat-label>
+              <input matInput formControlName="username" autocomplete="off">
+            </mat-form-field>
 
-          <mat-form-field appearance="outline">
-            <mat-label>User Name</mat-label>
-            <input matInput formControlName="username" autocomplete="off" id="usename">
-          </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label><mat-icon>lock</mat-icon></mat-label>
+              <mat-label>Password</mat-label>
+              <input matInput type="password" formControlName="password">
+            </mat-form-field>
 
-          <mat-form-field appearance="outline">
-            <mat-label>Password</mat-label>
-            <input matInput type="password" formControlName="password" id="passwd">
-          </mat-form-field>
+            <mat-card-actions align="end">
+              <button btn-a mat-raised-button (click)="authenticate()">Login</button>
+              <button btn-c mat-raised-button (click)="cancel()">Cancel</button>
+            </mat-card-actions>
 
-          <mat-card-actions align="end">
-            <button btn-a mat-raised-button (click)="authenticate()">Login</button>
-            <button btn-b mat-raised-button (click)="signup()">Sign Up</button>
-          </mat-card-actions>
-        </form>
-      </mat-card-content>
+            <mat-card-actions id="signup">
+              <mat-label>Don't have an account?</mat-label>
+              <a id="sign" mat-button (click)="signup()">Sign Up</a>
+            </mat-card-actions>
 
-    </mat-card>
+          </form>
+        </mat-card-content>
+
+      </mat-card>
+    </div>
 
   </mat-grid-tile>
 </mat-grid-list>

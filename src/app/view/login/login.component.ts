@@ -74,6 +74,16 @@ export class LoginComponent implements OnInit{
 
   }
 
+  cancel() {
+    const dialogRef = this.dialog.open(MessageComponent, {
+      width: '500px',
+      data: {heading: "Close", message: "Are you sure you want to leave the page?"}
+    });
+
+    // Redirect to the main browser page or any other desired route
+    //this.router.navigate(['/main']);
+  }
+
   signup(): void {
 
     const dialogRef = this.dialog.open(MessageComponent, {

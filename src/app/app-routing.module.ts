@@ -18,6 +18,7 @@ import {BookdistributionComponent} from "./view/modules/bookdistribution/bookdis
 
 const routes: Routes = [
   {path: "login", component: LoginComponent},
+
   {path: "", redirectTo: 'login', pathMatch: 'full'},
   {
     path: "main",

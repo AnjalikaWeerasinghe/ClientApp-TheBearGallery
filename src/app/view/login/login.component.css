@@ -2,62 +2,77 @@ mat-card {
   width: 30%;
   border: #003300;
   box-shadow: black 2px 2px 15px;
-}
-
-
-mat-card-header {
-  /*background: #003300;*/
-  background: none;
-}
-
-#bgimage{
-  background-position: center;
-  background-repeat: no-repeat;
-
-}
-
-#logo{
-  text-align: left;
-  width: 25%; height: 25%;
-}
-
-mat-card-title img {
-  width: 26.5rem;
-  height: 100%;
-  text-align: left;
-}
-
-mat-card-title p {
-  color: black;
   text-align: center;
 }
 
+mat-card-title #logoimg{
+  width: 75%; height: 75%;
+}
+
+mat-card-title .para2{
+  font-family: "Times New Roman";
+  font-size: 30px;
+  font-weight: bolder;
+  color: indigo;
+}
+
 mat-card-content {
-  padding: 10%;
+  padding: 0 10% 10%;
 }
 
 mat-card-actions {
   child-align: middle !important;
 }
 
+mat-form-field{
+  display: flex;
+  align-items: flex-end;
+}
+
+mat-icon{
+  margin-right: 8px;
+  position: static;
+}
+
 mat-card-actions button:nth-child(2) {
   margin-left: 10px;
 }
 
+mat-card-actions #signup{
+  align-items: center;
+}
+
+.background-container{
+  background: linear-gradient(20deg, cornflowerblue, rosybrown);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 button {
-  color: white !important;
+  color: black !important;
 }
 
 button[btn-a] {
-  background: palevioletred !important;
+  background: cornflowerblue !important;
 
 }
 
-button[btn-b] {
-  background: purple !important;
+button[btn-c]{
+  background: rosybrown;
 }
 
-#usename , #passwd{
-  background-color: white;
+#sign {
+  background: white !important;
+  color: blue;
 }
 
+#sign:hover{
+  color: purple;
+}
+
+#sign:visited{
+  color: brown;
+}
