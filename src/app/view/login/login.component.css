@@ -56,12 +56,9 @@ button {
 }
 
 button[btn-a] {
-  background: cornflowerblue !important;
+  background: linear-gradient(20deg, cornflowerblue, rosybrown) !important;
+  width: 200px;
 
-}
-
-button[btn-c]{
-  background: rosybrown;
 }
 
 #sign {

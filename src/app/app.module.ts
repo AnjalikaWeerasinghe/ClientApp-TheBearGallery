@@ -45,6 +45,7 @@ import { StudentComponent } from './view/modules/student/student.component';
 import { BatchregistrationComponent } from './view/modules/batchregistration/batchregistration.component';
 import { ClassComponent } from './view/modules/class/class.component';
 import { BookdistributionComponent } from './view/modules/bookdistribution/bookdistribution.component';
+import {MatMenuModule} from "@angular/material/menu";
 
 
 @NgModule({
@@ -93,6 +94,7 @@ import { BookdistributionComponent } from './view/modules/bookdistribution/bookd
     MatChipsModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
+    MatMenuModule,
   ],
   providers: [
     OperationComponent,

@@ -6,7 +6,7 @@ mat-grid-list {
 mat-grid-tile:nth-child(1) mat-card{
   padding-top: 20px;
   align-items: center;
-  background-color: darkslategray;
+  background-color: transparent;
 }
 
 mat-card {
@@ -50,7 +50,7 @@ mat-card-footer{
   font-size: 18px;
   margin-top: 55px;
   text-align: center;
-  background-color: gold;
+  background-color: transparent;
   padding-top: 10px;
   padding-bottom: 10px;
 }

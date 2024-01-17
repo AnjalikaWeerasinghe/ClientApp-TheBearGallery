@@ -1,64 +1,53 @@
-<mat-grid-list gutterSize="7" [cols]="4" rowHeight="4rem">
 
-  <mat-grid-tile [colspan]="4" [rowspan]="2" >
-    <mat-card style="background-image: url('assets/header2img.png')"><img id="headImg" src="assets/logo_.png"></mat-card>
-  </mat-grid-tile>
+<mat-grid-list gutterSize="120" [cols]="4" rowHeight="4rem">
+
+  <!--<mat-grid-tile [colspan]="4" [rowspan]="2" >
+    <mat-card style="background: linear-gradient(20deg, cornflowerblue, rosybrown)">
+      <mat-label>World's First Demo Soft Toy Factory</mat-label>
+    </mat-card>
+  </mat-grid-tile>-->
 
 
   <mat-grid-tile [colspan]="4" [rowspan]="4" id="quicklinks">
     <mat-card>
-      <mat-card-content><img  src="assets/payment.png"></mat-card-content>
-      <mat-card-footer ><a routerLink="payments">Payments</a></mat-card-footer>
+      <mat-card-content><img  src="assets/Rstock.png"></mat-card-content>
+      <mat-card-footer ><a routerLink="payments">Stock</a></mat-card-footer>
     </mat-card>
 
     <mat-card>
-      <mat-card-content><img  src="assets/register.png"></mat-card-content>
-      <mat-card-footer ><a routerLink="batchregistration" >Register</a></mat-card-footer>
+      <mat-card-content><img  src="assets/purchase-icon-png-19.jpg"></mat-card-content>
+      <mat-card-footer ><a routerLink="batchregistration" >Purchase</a></mat-card-footer>
     </mat-card>
 
     <mat-card>
-      <mat-card-content><img  src="assets/studnet.png"></mat-card-content>
-      <mat-card-footer ><a routerLink="students">Student</a></mat-card-footer>
+      <mat-card-content><img  src="assets/stock-market-icon-png-25.jpg"></mat-card-content>
+      <mat-card-footer ><a routerLink="students">Sales</a></mat-card-footer>
     </mat-card>
 
     <mat-card>
-      <mat-card-content><img  src="assets/classshedule.png"></mat-card-content>
-      <mat-card-footer ><a routerLink="classes">Classes</a></mat-card-footer>
+      <mat-card-content><img  src="assets/R.png"></mat-card-content>
+      <mat-card-footer ><a routerLink="classes">Inventory</a></mat-card-footer>
     </mat-card>
-
+<!--
     <mat-card>
       <mat-card-content><img  src="assets/tutes.png"></mat-card-content>
       <mat-card-footer ><a routerLink="books">Books</a></mat-card-footer>
     </mat-card>
-
+-->
     <mat-card>
-      <mat-card-content><img  src="assets/attendence.png"></mat-card-content>
-      <mat-card-footer ><a routerLink="attendance">Attendance</a></mat-card-footer>
+      <mat-card-content><img  src="assets/report-icon-33.png"></mat-card-content>
+      <mat-card-footer ><a routerLink="attendance">Reports</a></mat-card-footer>
     </mat-card>
   </mat-grid-tile>
 
-  <mat-grid-tile [colspan]="2" [rowspan]="4" >
-    <mat-card>
-      <mat-card-title style="background-image: url('assets/header2img.png')">User Specific Messages</mat-card-title>
-      <mat-card-content >
-        <mat-list>
-          <mat-list-item *ngFor="let message of userspecmessages">
-            <mat-icon matListItemIcon> email</mat-icon>
-            <div matListItemTitle >{{message.name}}</div>
-            <div matListItemLine>{{message.updated | date}}</div>
-          </mat-list-item>
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-
-
-  <mat-grid-tile [colspan]="2" [rowspan]="4" >
+</mat-grid-list>
+<!--
+    <mat-grid-tile [colspan]="2" [rowspan]="4" >
       <mat-card>
-        <mat-card-title style="background-image: url('assets/header2img.png')">General Messages</mat-card-title>
+        <mat-card-title style="background-image: url('assets/header2img.png')">User Specific Messages</mat-card-title>
         <mat-card-content >
           <mat-list>
-            <mat-list-item *ngFor="let message of generalmessages">
+            <mat-list-item *ngFor="let message of userspecmessages">
               <mat-icon matListItemIcon> email</mat-icon>
               <div matListItemTitle >{{message.name}}</div>
               <div matListItemLine>{{message.updated | date}}</div>
@@ -66,6 +55,22 @@
           </mat-list>
         </mat-card-content>
       </mat-card>
-  </mat-grid-tile>
+    </mat-grid-tile>
 
-</mat-grid-list>
+
+    <mat-grid-tile [colspan]="2" [rowspan]="4" >
+        <mat-card>
+          <mat-card-title style="background-image: url('assets/header2img.png')">General Messages</mat-card-title>
+          <mat-card-content >
+            <mat-list>
+              <mat-list-item *ngFor="let message of generalmessages">
+                <mat-icon matListItemIcon> email</mat-icon>
+                <div matListItemTitle >{{message.name}}</div>
+                <div matListItemLine>{{message.updated | date}}</div>
+              </mat-list-item>
+            </mat-list>
+          </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+
+-->

@@ -1,10 +1,24 @@
 /* Tool Bar */
+.background{
+  background: linear-gradient(20deg, cornflowerblue, rosybrown) ;
+}
+
+mat-card mat-card-footer{
+  justify-content: center ;
+  display: compact;
+  align-items: baseline;
+}
+
+mat-toolbar{
+  background: transparent;
+}
 
 mat-toolbar-row {
   display: flex;
   justify-content: space-between;
   width: 100%;
   align-items: center;
+  background: transparent ;
 }
 
 .toolbar-left {
@@ -30,7 +44,7 @@ mat-toolbar-row {
 
 
 .btn-nav.mat-mdc-icon-button {
-  background-color: #2b3815;
+  background-color: darkblue;
   color: #ffffff;
   vertical-align: middle;
   box-shadow: 1px 1px 6px #333333;
@@ -41,8 +55,10 @@ mat-toolbar-row {
 
 .lbl-user {
   font-size: 14px;
-  color: white;
+  color: darkblue;
   margin: 0px 5px 0px 0px;
+  font-family: "Times New Roman";
+  font-weight: bold;
 }
 
 .img-user {
@@ -52,14 +68,14 @@ mat-toolbar-row {
 }
 
 .btn-logout {
-  color: white;
+  color: darkblue;
   border-radius: 0px;
   margin: 0px 0px 0px -5px;
 }
 
 
 /* Side Navigation */
-
+/*
 mat-sidenav-container {
   height: 100%;
 }
@@ -67,46 +83,54 @@ mat-sidenav-container {
 mat-sidenav {
   width: 15%;
 }
-
-mat-sidenav a {
+*/
+mat-toolbar a {
   font-size: 14px;
   text-decoration: none;
-  color: black;
+  color: darkblue;
 }
 
-mat-sidenav mat-icon {
+mat-toolbar mat-icon {
   font-size: 16px;
   margin: 0px 0px -10px 0px;
 }
 
-mat-nav-list mat-list-item {
+mat-toolbar mat-list-item {
   height: 35px;
-  font-size: 14px;
+  font-size: 13px;
   padding: 0px 5px 0px 10px;
-  border-bottom: #8aa88a 2px solid;
+  border-bottom: none;
 }
 
-mat-nav-list mat-list-item:hover {
-  background: #b5d3b5;
+mat-toolbar mat-list-item:hover {
+  background: linear-gradient(20deg, cornflowerblue, rosybrown) ;
+  border-radius: 10px;
 }
 
-mat-nav-list mat-expansion-panel {
+mat-toolbar mat-expansion-panel {
   box-shadow: none;
-  border-radius: unset;
+  border-radius: 10px;
+  border: none;
+  background-color: transparent;
 }
 
-mat-nav-list mat-expansion-panel-header {
+mat-toolbar mat-expansion-panel-header {
   height: 35px;
-  padding: 0 20px 0 0;
+  padding: 0 5px 0 0;
 }
 
-mat-nav-list mat-expansion-panel-header:hover {
-  background: #b5d3b5 !important;
+mat-toolbar mat-expansion-panel-header:hover {
+  background: linear-gradient(20deg, cornflowerblue, rosybrown) !important;
 }
 
-mat-nav-list mat-expansion-panel mat-list-item {
-  height: 28px;
+mat-toolbar mat-expansion-panel mat-list-item {
+  height: 35px;
 }
+
+mat-toolbar mat-expansion-panel mat-list-item:hover{
+  background: transparent;
+}
+
 
 
 
