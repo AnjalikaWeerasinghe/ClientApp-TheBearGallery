@@ -1,37 +1,48 @@
 /* Tool Bar */
 .background{
-  background: linear-gradient(20deg, cornflowerblue, rosybrown) ;
+  background: linear-gradient(40deg, darkblue, cadetblue) ;
+  position: relative;
 }
 
-mat-card mat-card-footer{
-  justify-content: center ;
-  display: compact;
-  align-items: baseline;
+#home{
+  position: absolute;
+  left: 0px;
+  top: 10px;
+  width: 100px;
+  text-decoration: none;
+  display: block;
+  font-size: 20px;
+}
+
+mat-toolbar-row #toolbar-left {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  position: fixed;
+  float: left;
 }
 
 mat-toolbar{
-  background: transparent;
+  background: none;
+  margin-left: 0;
+  margin-bottom: 15px;
 }
 
 mat-toolbar-row {
-  display: flex;
+  display: inline-flex;
   justify-content: space-between;
   width: 100%;
   align-items: center;
-  background: transparent ;
-}
+  position: fixed;
+  float: left;
 
-.toolbar-left {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
 }
-
 
 .toolbar-right {
   display: flex;
-  justify-content: flex-end;
+  justify-content: left;
   align-items: center;
+  float: left;
 }
 
 
@@ -42,20 +53,9 @@ mat-toolbar-row {
   vertical-align: middle;
 }
 
-
-.btn-nav.mat-mdc-icon-button {
-  background-color: darkblue;
-  color: #ffffff;
-  vertical-align: middle;
-  box-shadow: 1px 1px 6px #333333;
-  border: #c0d9c3 solid 2px;
-  padding: 10px;
-  --mat-mdc-button-ripple-color: rgba(255, 255, 255, 0.2);
-}
-
 .lbl-user {
   font-size: 14px;
-  color: darkblue;
+  color: white;
   margin: 0px 5px 0px 0px;
   font-family: "Times New Roman";
   font-weight: bold;
@@ -68,7 +68,7 @@ mat-toolbar-row {
 }
 
 .btn-logout {
-  color: darkblue;
+  color: white;
   border-radius: 0px;
   margin: 0px 0px 0px -5px;
 }
@@ -85,14 +85,18 @@ mat-sidenav {
 }
 */
 mat-toolbar a {
-  font-size: 14px;
+  font-size: 20px;
   text-decoration: none;
-  color: darkblue;
+  color: white;
+  justify-content: flex-start;
+  justify-items: left;
+  font-family: "Times New Roman";
+  font-weight: bold;
 }
 
 mat-toolbar mat-icon {
-  font-size: 16px;
-  margin: 0px 0px -10px 0px;
+  font-size: 20px;
+  margin: 0px 3px -7px 0px;
 }
 
 mat-toolbar mat-list-item {
@@ -100,10 +104,11 @@ mat-toolbar mat-list-item {
   font-size: 13px;
   padding: 0px 5px 0px 10px;
   border-bottom: none;
+  justify-items: left;
 }
 
 mat-toolbar mat-list-item:hover {
-  background: linear-gradient(20deg, cornflowerblue, rosybrown) ;
+  background: none ;
   border-radius: 10px;
 }
 
@@ -120,7 +125,7 @@ mat-toolbar mat-expansion-panel-header {
 }
 
 mat-toolbar mat-expansion-panel-header:hover {
-  background: linear-gradient(20deg, cornflowerblue, rosybrown) !important;
+  background: none !important;
 }
 
 mat-toolbar mat-expansion-panel mat-list-item {
@@ -129,6 +134,14 @@ mat-toolbar mat-expansion-panel mat-list-item {
 
 mat-toolbar mat-expansion-panel mat-list-item:hover{
   background: transparent;
+}
+
+mat-card-footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Times New Roman";
+  background-color: cornflowerblue;
 }
 
 

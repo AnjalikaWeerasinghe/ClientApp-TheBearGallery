@@ -1,49 +1,58 @@
 mat-grid-list {
   /*padding: 10% 20% 10% 20% !important;*/
-  margin: 8px;
+  margin: 0;
 }
 
-mat-grid-tile:nth-child(1) mat-card{
-  padding-top: 20px;
+mat-grid-tile mat-card{
+  padding-top: 25px;
   align-items: center;
-  background-color: transparent;
+}
+
+#card1{
+  background-color: khaki;
+}
+#card2{
+  background-color: palevioletred;
+}
+#card3{
+  background-color: darkkhaki;
+}
+#card4{
+  background-color: rosybrown;
+}
+#card5{
+  background-color: burlywood;
+}
+#card6{
+  background-color: coral;
+}
+#card7{
+  background-color: darkgoldenrod;
 }
 
 mat-card {
-  height: 99% !important;
+  height: 100% !important;
   width: 100%;
-  margin: 5px;
+  margin: 25px;
   overflow: auto;
   border-radius: 12px;
 }
 
-mat-card-title{
-  color: white;
-  margin-left: 5px;
-  margin-top: 5px;
-  /*background-color: #8aa88a;*/
-  border-radius: 6px;
-  padding-left: 10px;
-}
-
-mat-card #headImg{
-  height: 80%;
-}
-
-#quicklinks mat-card img{
+mat-card img{
   scale: 210%;
   width: 50%;
   height: 80%;
   padding-left: 18px;
-  padding-top: 15px;
+  padding-top: 10px;
 }
 
-#quicklinks mat-card{
+mat-card{
   height: unset!important;
-  padding-top: 4px;
+  padding-top: 0;
   width: 150px;
-  margin: 0 20px 0 20px;
-  border: solid gold;
+  margin: 50px 20px 35px 20px;
+  border: none;
+  background-color: transparent;
 }
 
 mat-card-footer{
@@ -56,6 +65,9 @@ mat-card-footer{
 }
 
 mat-card-footer a{
+  font-family: "Times New Roman";
   text-decoration: none;
-  color: black;
+  color: darkblue;
+  font-weight: bolder;
+  font-size: 20px;
 }
