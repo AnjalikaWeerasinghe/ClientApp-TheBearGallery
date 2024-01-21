@@ -1,10 +1,11 @@
 mat-grid-list {
   /*padding: 10% 20% 10% 20% !important;*/
   margin: 0;
+  grid-gap: 15px;
 }
 
 mat-grid-tile mat-card{
-  padding-top: 25px;
+  padding-top: 15px;
   align-items: center;
 }
 
@@ -36,6 +37,7 @@ mat-card {
   margin: 25px;
   overflow: auto;
   border-radius: 12px;
+  justify-content: center;
 }
 
 mat-card img{
@@ -70,4 +72,17 @@ mat-card-footer a{
   color: darkblue;
   font-weight: bolder;
   font-size: 20px;
+}
+
+mat-grid-list #footer{
+  display: flex;
+  justify-content: center;
+  font-family: "Times New Roman";
+  background-color: transparent;
+  font-size: 1px;
+}
+
+#footer img{
+  scale: 10%;
+  justify-content: center;
 }

@@ -46,6 +46,7 @@ import { BatchregistrationComponent } from './view/modules/batchregistration/bat
 import { ClassComponent } from './view/modules/class/class.component';
 import { BookdistributionComponent } from './view/modules/bookdistribution/bookdistribution.component';
 import {MatMenuModule} from "@angular/material/menu";
+import {DashboardComponent} from './view/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -67,8 +68,8 @@ import {MatMenuModule} from "@angular/material/menu";
     StudentComponent,
     BatchregistrationComponent,
     ClassComponent,
-    BookdistributionComponent
-
+    BookdistributionComponent,
+    DashboardComponent,
   ],
   imports: [
     MatDatepickerModule,

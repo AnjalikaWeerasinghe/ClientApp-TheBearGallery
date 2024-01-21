@@ -136,13 +136,6 @@ mat-toolbar mat-expansion-panel mat-list-item:hover{
   background: transparent;
 }
 
-mat-card-footer{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Times New Roman";
-  background-color: cornflowerblue;
-}
 
 
 
