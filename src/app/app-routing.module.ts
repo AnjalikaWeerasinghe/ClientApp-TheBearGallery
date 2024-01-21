@@ -42,6 +42,7 @@ const routes: Routes = [
       {path:"attendance",component:AttendanceComponent},
       {path: "home/attendance", redirectTo: 'attendance', pathMatch: 'full'},
       {path: "home/dashboard", redirectTo: 'dashboard', pathMatch: 'full'},
+      {path: "dashboard", component:DashboardComponent},
     ]
   }];
 

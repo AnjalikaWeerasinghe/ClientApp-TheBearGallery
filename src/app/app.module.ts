@@ -47,6 +47,7 @@ import { ClassComponent } from './view/modules/class/class.component';
 import { BookdistributionComponent } from './view/modules/bookdistribution/bookdistribution.component';
 import {MatMenuModule} from "@angular/material/menu";
 import {DashboardComponent} from './view/dashboard/dashboard.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 
 @NgModule({
@@ -96,6 +97,7 @@ import {DashboardComponent} from './view/dashboard/dashboard.component';
     ReactiveFormsModule,
     MatSlideToggleModule,
     MatMenuModule,
+    MatTooltipModule,
   ],
   providers: [
     OperationComponent,
