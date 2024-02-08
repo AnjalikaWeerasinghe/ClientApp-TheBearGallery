@@ -48,6 +48,7 @@ import { BookdistributionComponent } from './view/modules/bookdistribution/bookd
 import {MatMenuModule} from "@angular/material/menu";
 import {DashboardComponent} from './view/dashboard/dashboard.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatSortModule} from "@angular/material/sort";
 
 
 @NgModule({
@@ -98,6 +99,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MatSlideToggleModule,
     MatMenuModule,
     MatTooltipModule,
+    MatSortModule,
   ],
   providers: [
     OperationComponent,

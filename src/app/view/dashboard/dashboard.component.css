@@ -1,0 +1,49 @@
+mat-label{
+  font-size: 28px;
+  font-weight: bolder;
+  border-bottom: 15px;
+}
+
+mat-grid-list{
+  background: transparent;
+}
+
+#heading{
+  font-size: 28px;
+  font-family: "Times New Roman";
+  color: white;
+}
+
+mat-grid-list mat-table{
+  background: transparent;
+  display: table;
+  max-height: 500px;
+  min-width: 500px;
+  overflow: scroll;
+  margin-left: 0;
+
+}
+
+mat-table mat-header-cell{
+  font-family: "Times New Roman";
+  color: black;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+mat-table mat-cell{
+  font-family: "Times New Roman";
+  color: black;
+  font-size: 15px;
+}
+
+.table-container{
+  background: linear-gradient(20deg, cornflowerblue, rosybrown);
+  justify-content: flex-start;
+}
+
+mat-paginator{
+  background: transparent;
+}
+
+

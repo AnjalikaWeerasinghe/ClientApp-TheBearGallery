@@ -1,36 +1,40 @@
-<mat-grid-list gutterSize="200px" [cols]="4" rowHeight="4rem" style="background: cornflowerblue">
+<mat-label id="heading">Manufacturing KPI Dashboard</mat-label>
+<mat-grid-list [cols]="8" rowHeight="8rem">
+  <mat-grid-tile [colspan]="8" [rowspan]="6">
+    <div class="table-container">
+      <mat-table #table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="monthyr">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Month and Year</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.monthyr}} </mat-cell>
+        </ng-container>
 
-  <mat-grid-tile [colspan]="2" [rowspan]="2">
-    <mat-grid-tile-header>Effectiveness</mat-grid-tile-header>
-    <mat-divider></mat-divider>
-    <div>
-      <table border="1">
-        <tr>
-          <th> </th>
-          <th>Current Month</th>
-          <th>Previous Month</th>
-          <th> </th>
-        </tr>
-      </table>
+        <ng-container matColumnDef="provolume">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Production Volume<br>(No. of pcs)</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.provolume}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="totcost">
+          <mat-header-cell *matHeaderCellDef>Total Expenditures<br> (Rs.)</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.totcost}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="revenue">
+          <mat-header-cell *matHeaderCellDef>Revenue<br> (Rs.)</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.revenue}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="profit">
+          <mat-header-cell *matHeaderCellDef>Earned Profit<br> (Rs.)</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.profit}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+
+      <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10]" [showFirstLastButtons]="true">
+      </mat-paginator>
     </div>
   </mat-grid-tile>
-
-  <mat-grid-tile [colspan]="2" [rowspan]="2">
-    <mat-grid-tile-header>Quality/Performance</mat-grid-tile-header>
-    <mat-divider></mat-divider>
-
-  </mat-grid-tile>
-
-  <mat-grid-tile [colspan]="2" [rowspan]="2">
-    <mat-grid-tile-header>Production</mat-grid-tile-header>
-    <mat-divider></mat-divider>
-
-  </mat-grid-tile>
-
-  <mat-grid-tile [colspan]="2" [rowspan]="2">
-    <mat-grid-tile-header>Cost/Revenue</mat-grid-tile-header>
-    <mat-divider></mat-divider>
-
-  </mat-grid-tile>
-
 </mat-grid-list>
+
