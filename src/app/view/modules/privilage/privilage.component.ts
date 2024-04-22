@@ -274,7 +274,7 @@ export class PrivilageComponent {
 
       confirm.afterClosed().subscribe(async result => {
         if (result) {
-          // console.log("EmployeeService.add(emp)");
+          // console.log("Customerservice.add(emp)");
 
           this.ps.add(this.privilage).then((responce: [] | undefined) => {
             //console.log("Res-" + responce);
@@ -405,7 +405,7 @@ export class PrivilageComponent {
         });
         confirm.afterClosed().subscribe(async result => {
           if (result) {
-            //console.log("EmployeeService.update()");
+            //console.log("Customerservice.update()");
             this.privilage = this.form.getRawValue();
 
             this.privilage.id = this.oldprivilage.id;

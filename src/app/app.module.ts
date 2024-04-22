@@ -7,7 +7,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HomeComponent} from './view/home/home.component';
 import {LoginComponent} from './view/login/login.component';
 import {MainwindowComponent} from './view/mainwindow/mainwindow.component';
-import {EmployeeComponent} from './view/modules/employee/employee.component';
 import {UserComponent} from './view/modules/user/user.component';
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
@@ -25,14 +24,12 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {EmployeeService} from "./service/employeeservice";
+import {Customerservice} from "./service/customerservice";
 import {MatSelectModule} from "@angular/material/select";
 import {ConfirmComponent} from "./util/dialog/confirm/confirm.component";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {DatePipe} from "@angular/common";
-import { ArrearsByProgramComponent } from './report/view/arrearsbyprogram/arrearsbyprogram.component';
-import {CountByDesignationComponent} from "./report/view/countbydesignation/countbydesignation.component";
 import {MatChipsModule} from "@angular/material/chips";
 import { PrivilageComponent } from './view/modules/privilage/privilage.component';
 import {JwtInterceptor} from "./service/JwtInterceptor";
@@ -40,15 +37,12 @@ import {AuthorizationManager} from "./service/authorizationmanager";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { OperationComponent } from './view/modules/operation/operation.component';
 import { PaymentComponent } from './view/modules/payment/payment.component';
-import { AttendanceComponent } from './view/modules/attendance/attendance.component';
-import { StudentComponent } from './view/modules/student/student.component';
-import { BatchregistrationComponent } from './view/modules/batchregistration/batchregistration.component';
-import { ClassComponent } from './view/modules/class/class.component';
-import { BookdistributionComponent } from './view/modules/bookdistribution/bookdistribution.component';
 import {MatMenuModule} from "@angular/material/menu";
 import {DashboardComponent} from './view/dashboard/dashboard.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatSortModule} from "@angular/material/sort";
+import { CustomerComponent } from './view/modules/customer/customer.component';
+import { MaterialComponent } from './view/modules/material/material.component';
 
 
 @NgModule({
@@ -57,21 +51,15 @@ import {MatSortModule} from "@angular/material/sort";
     HomeComponent,
     LoginComponent,
     MainwindowComponent,
-    EmployeeComponent,
     UserComponent,
     ConfirmComponent,
-    ArrearsByProgramComponent,
-    CountByDesignationComponent,
     MessageComponent,
     PrivilageComponent,
     OperationComponent,
     PaymentComponent,
-    AttendanceComponent,
-    StudentComponent,
-    BatchregistrationComponent,
-    ClassComponent,
-    BookdistributionComponent,
     DashboardComponent,
+    CustomerComponent,
+    MaterialComponent,
   ],
   imports: [
     MatDatepickerModule,
@@ -103,7 +91,7 @@ import {MatSortModule} from "@angular/material/sort";
   ],
   providers: [
     OperationComponent,
-    EmployeeService,
+    Customerservice,
     DatePipe,
     AuthorizationManager,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }

@@ -1,4 +1,3 @@
-import {Customerstatus} from "../entity/customerstatus";
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Customertype} from "../entity/customertype";
@@ -7,17 +6,17 @@ import {Customertype} from "../entity/customertype";
   providedIn: 'root'
 })
 
-export class Emptypeservice {
+export class Customertypeservice {
 
   constructor(private http: HttpClient) {  }
 
   async getAllList(): Promise<Array<Customertype>> {
 
-    const empolueestpes = await this.http.get<Array<Customertype>>('http://localhost:8080/empolyeestypes/list').toPromise();
-    if(empolueestpes == undefined){
+    const customertypes = await this.http.get<Array<Customertype>>('http://localhost:8080/customertypes/list').toPromise();
+    if(customertypes == undefined){
       return [];
     }
-    return empolueestpes;
+    return customertypes;
   }
 
 }

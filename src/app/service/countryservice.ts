@@ -6,17 +6,17 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 
-export class DesignationService {
+export class Countryservice {
 
   constructor(private http: HttpClient) {  }
 
   async getAllList(): Promise<Array<Country>> {
 
-    const designations = await this.http.get<Array<Country>>('http://localhost:8080/designations/list').toPromise();
-    if(designations == undefined){
+    const countries = await this.http.get<Array<Country>>('http://localhost:8080/countries/list').toPromise();
+    if(countries == undefined){
       return [];
     }
-    return designations;
+    return countries;
   }
 
 }

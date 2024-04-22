@@ -1,7 +1,5 @@
-import {Employee} from "../entity/employee";
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Gender} from "../entity/gender";
 import {Privilege} from "../entity/privilege";
 
 @Injectable({

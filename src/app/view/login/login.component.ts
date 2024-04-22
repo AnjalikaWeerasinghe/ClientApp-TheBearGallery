@@ -93,26 +93,4 @@ export class LoginComponent implements OnInit{
     // this.ut.initializeMenuState();
   }
 
-  // authenticate(): void {
-  //   if (this.loginform.controls["username"].value == "admin" && this.loginform.controls["password"].value == "1234")
-  //     this.router.navigateByUrl("main/home");
-  //   else {
-  //     const dialogRef = this.dialog.open(MessageComponent, {
-  //       width: '500px',
-  //       data: {
-  //         heading: "Invalid Login Details",
-  //         message: "Username/Password Empty or Inavlid. Check for Username Length"
-  //       }
-  //     });
-  //
-  //     dialogRef.afterClosed().subscribe(async result => {
-  //       if (!result) {
-  //         return;
-  //       }
-  //     });
-  //
-  //     this.router.navigateByUrl("login");
-  //   }
-  // }
-
 }

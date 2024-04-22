@@ -18,23 +18,10 @@ export class User{
   public usertype !: Usertype;
   public customer !: Customer;
 
+  constructor() {
 
-  constructor(id: number, username: string, password: string, salt: string, confirmpassword: string, userroles: Array<Userrole>,
-              description: string, tocreated: string | null, docreated: string, userstatus: Userstatus, usertype: Usertype,
-              customer: Customer) {
-    this.id = id;
-    this.username = username;
-    this.password = password;
-    this.salt = salt;
-    this.confirmpassword = confirmpassword;
-    this.userroles = userroles;
-    this.description = description;
-    this.tocreated = tocreated;
-    this.docreated = docreated;
-    this.userstatus = userstatus;
-    this.usertype = usertype;
-    this.customer = customer;
   }
+
 
 }
 

@@ -1,4 +1,3 @@
-import {Customerstatus} from "../entity/customerstatus";
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Opetype} from "../entity/opetype";

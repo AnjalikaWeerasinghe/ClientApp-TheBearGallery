@@ -6,17 +6,17 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 
-export class Empstatusservice {
+export class Customerstatusservice {
 
   constructor(private http: HttpClient) {  }
 
   async getAllList(): Promise<Array<Customerstatus>> {
 
-    const employeestatuss = await this.http.get<Array<Customerstatus>>('http://localhost:8080/employeestatuses/list').toPromise();
-    if(employeestatuss == undefined){
+    const customerstatuses = await this.http.get<Array<Customerstatus>>('http://localhost:8080/customerstatuses/list').toPromise();
+    if(customerstatuses == undefined){
       return [];
     }
-    return employeestatuss;
+    return customerstatuses;
   }
 
 }
