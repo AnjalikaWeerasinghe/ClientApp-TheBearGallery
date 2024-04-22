@@ -1,4 +1,4 @@
-export class Usrtype {
+export class Usertype {
 
   public id !: number;
   public name !: string;

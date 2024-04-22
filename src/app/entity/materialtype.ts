@@ -1,4 +1,4 @@
-export class Designation {
+export class Materialtype {
 
   public id !: number;
   public name !: string;

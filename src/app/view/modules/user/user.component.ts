@@ -20,7 +20,7 @@ import {MessageComponent} from "../../../util/dialog/message/message.component";
 import {Userrole} from "../../../entity/userrole";
 import {AuthoritySevice} from "../../../service/authoritysevice";
 import {AuthorizationManager} from "../../../service/authorizationmanager";
-import {Usrtype} from "../../../entity/usrtype";
+import {Usertype} from "../../../entity/usertype";
 import {Usrtypeservice} from "../../../service/usrtypeservice";
 
 @Component({
@@ -36,7 +36,7 @@ export class UserComponent implements OnInit{
 
   employees: Array<Employee> = [];
   userstatues: Array<Userstatus> = [];
-  usertypes: Array<Usrtype> = [];
+  usertypes: Array<Usertype> = [];
   users: Array<User> = [];
   userroles: Array<Userrole> = [];
 
@@ -143,7 +143,7 @@ export class UserComponent implements OnInit{
       this.userstatues = usts;
     });
 
-    this.ust.getAllList().then((ust:Usrtype[]) => {
+    this.ust.getAllList().then((ust:Usertype[]) => {
       this.usertypes = ust;
     });
 

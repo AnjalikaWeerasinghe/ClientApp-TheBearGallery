@@ -1,8 +1,8 @@
-import {Empstatus} from "../entity/empstatus";
+import {Customerstatus} from "../entity/customerstatus";
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Emptype} from "../entity/emptype";
-import {Usrtype} from "../entity/usrtype";
+import {Customertype} from "../entity/customertype";
+import {Usertype} from "../entity/usertype";
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +12,9 @@ export class Usrtypeservice {
 
   constructor(private http: HttpClient) {  }
 
-  async getAllList(): Promise<Array<Usrtype>> {
+  async getAllList(): Promise<Array<Usertype>> {
 
-    const usertpes = await this.http.get<Array<Usrtype>>('http://localhost:8080/usrtypes/list').toPromise();
+    const usertpes = await this.http.get<Array<Usertype>>('http://localhost:8080/usrtypes/list').toPromise();
     if(usertpes == undefined){
       return [];
     }

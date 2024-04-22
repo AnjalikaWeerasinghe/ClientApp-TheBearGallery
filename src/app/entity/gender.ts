@@ -1,4 +1,3 @@
-
 export class Gender {
 
   public id !: number;
