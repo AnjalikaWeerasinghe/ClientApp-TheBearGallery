@@ -14,17 +14,16 @@ import {MatPaginator} from "@angular/material/paginator";
 import {ConfirmComponent} from "../../../util/dialog/confirm/confirm.component";
 import {MatDialog} from "@angular/material/dialog";
 import {MessageComponent} from "../../../util/dialog/message/message.component";
-import {Employee} from "../../../entity/employee";
 import {AuthorizationManager} from "../../../service/authorizationmanager";
 import {Opetype} from "../../../entity/opetype";
 import {Opetypeservice} from "../../../service/opetypeservice";
 
 @Component({
   selector: 'app-privileg',
-  templateUrl: './privilage.component.html',
-  styleUrls: ['./privilage.component.css']
+  templateUrl: './privilege.component.html',
+  styleUrls: ['./privilege.component.css']
 })
-export class PrivilageComponent {
+export class PrivilegeComponent {
 
   form!:FormGroup;
   ssearch!:FormGroup;
@@ -274,7 +273,7 @@ export class PrivilageComponent {
 
       confirm.afterClosed().subscribe(async result => {
         if (result) {
-          // console.log("Customerservice.add(emp)");
+          // console.log("Employeeservice.add(emp)");
 
           this.ps.add(this.privilage).then((responce: [] | undefined) => {
             //console.log("Res-" + responce);
@@ -405,7 +404,7 @@ export class PrivilageComponent {
         });
         confirm.afterClosed().subscribe(async result => {
           if (result) {
-            //console.log("Customerservice.update()");
+            //console.log("Employeeservice.update()");
             this.privilage = this.form.getRawValue();
 
             this.privilage.id = this.oldprivilage.id;

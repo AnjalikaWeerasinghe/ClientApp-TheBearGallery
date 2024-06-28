@@ -12,7 +12,7 @@ export class Materialtypeservice{
 
   async getAllList(): Promise<Array<Materialtype>> {
 
-  const mattypess = await this.http.get<Array<Materialtype>>('http://localhost:8080/materials/list').toPromise();
+  const mattypess = await this.http.get<Array<Materialtype>>('http://localhost:8080/materialtypes/list').toPromise();
   if(mattypess == undefined){
   return [];
 }

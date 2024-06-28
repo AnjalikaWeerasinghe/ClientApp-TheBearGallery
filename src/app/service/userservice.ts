@@ -16,7 +16,6 @@ export class UserService {
   }
 
   async update(user: User): Promise<[]|undefined>{
-    //console.log("Employee Updating-"+employee.id);
     return this.http.put<[]>('http://localhost:8080/users', user).toPromise();
   }
 
@@ -29,7 +28,6 @@ export class UserService {
   }
 
   async add(user: User): Promise<[]|undefined>{
-    // console.log("aaaa");
     console.log(user);
     return this.http.post<[]>('http://localhost:8080/users', user).toPromise();
   }

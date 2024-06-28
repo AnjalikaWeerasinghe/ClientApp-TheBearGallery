@@ -25,27 +25,18 @@ export class MainwindowComponent {
     this.authService.clearMenuState();
     localStorage.removeItem("Authorization");
   }
-    admMenuItems = this.authService.admMenuItems;
-    prdMenuItems = this.authService.prdMenuItems;
-    supMenuItems = this.authService.supMenuItems;
-    ordMenuItems = this.authService.ordMenuItems;
-    resMenuItems = this.authService.resMenuItems;
-
-  isMenuVisible(category: string): boolean {
-    switch (category) {
-      case 'Admin':
-        return this.admMenuItems.some(menuItem => menuItem.accessFlag);
-      case 'Product':
-        return this.prdMenuItems.some(menuItem => menuItem.accessFlag);
-      case 'Supplier':
-        return this.supMenuItems.some(menuItem => menuItem.accessFlag);
-      case 'Order':
-        return this.ordMenuItems.some(menuItem => menuItem.accessFlag);
-      case 'Resource':
-        return this.resMenuItems.some(menuItem => menuItem.accessFlag);
-      default:
-        return false;
-    }
-  }
+  //   admMenuItems = this.authService.admMenuItems;
+  //   invMenuItems = this.authService.invMenuItems;
+  //
+  // isMenuVisible(category: string): boolean {
+  //   switch (category) {
+  //     case 'Admin':
+  //       return this.admMenuItems.some(menuItem => menuItem.accessFlag);
+  //     case 'Inventory':
+  //       return this.invMenuItems.some(menuItem => menuItem.accessFlag);
+  //     default:
+  //       return false;
+  //   }
+  // }
 
 }

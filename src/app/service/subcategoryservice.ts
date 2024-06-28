@@ -10,9 +10,9 @@ export class Subcategoryservice{
 
   constructor(private http: HttpClient) { }
 
-  async getAllList(): Promise<Array<Subcategory>> {
+  async getAllList(qry:String): Promise<Array<Subcategory>> {
 
-    const subcategories = await this.http.get<Array<Subcategory>>('http://localhost:8080/subcategories/list').toPromise();
+    const subcategories = await this.http.get<Array<Subcategory>>('http://localhost:8080/subcategories/list'+qry).toPromise();
     if(subcategories == undefined){
       return [];
     }

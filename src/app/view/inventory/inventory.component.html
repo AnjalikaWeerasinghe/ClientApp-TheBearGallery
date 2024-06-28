@@ -1,0 +1,36 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span class="toolbar-left">
+      <button mat-icon-button (click)="opened=!opened" class="btn-nav"><mat-icon>menu</mat-icon></button>
+      <label class="lbl-menu">Inventory Settings</label>
+    </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+
+  <mat-sidenav mode="side" [(opened)]="opened">
+    <mat-nav-list>
+
+      <mat-list-item>
+        <a mat-list-item routerLink="material"><mat-icon>category</mat-icon> Raw Material</a>
+      </mat-list-item>
+      <mat-list-item>
+        <a mat-list-item routerLink="material"><mat-icon>toys</mat-icon> Product</a>
+      </mat-list-item>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+
+
+
+
+
+

@@ -1,7 +1,7 @@
 /* Tool Bar */
 .background{
   background: linear-gradient(40deg, darkblue, cadetblue) ;
-  position: inherit;
+
 }
 
 #home{
@@ -134,6 +134,10 @@ mat-toolbar mat-expansion-panel mat-list-item {
 }
 
 mat-toolbar mat-expansion-panel mat-list-item:hover{
+  background: transparent;
+}
+
+.content{
   background: transparent;
 }
 

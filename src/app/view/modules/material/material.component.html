@@ -1,1 +1,190 @@
-<p>material works!</p>
+<mat-grid-list [cols]="12" rowHeight="4rem">
+
+  <mat-grid-tile [colspan]="4" [rowspan]="10">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Raw Material Details</mat-card-title>
+      </mat-card-header>
+      <mat-card-content id="materialform">
+        <mat-form [formGroup]="form">
+          <mat-form-field appearance="outline">
+            <mat-label>Select a Category</mat-label>
+            <mat-select formControlName="category">
+              <mat-option [value]="null">Not Selected</mat-option>
+              <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Select a Subcategory</mat-label>
+            <mat-select formControlName="subcategory">
+              <mat-option [value]="null">Not Selected</mat-option>
+              <mat-option *ngFor="let subcategory of subcategories" [value]="subcategory">{{subcategory.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Select a Brand</mat-label>
+            <mat-select formControlName="brand">
+              <mat-option [value]="null">Not Selected</mat-option>
+              <mat-option *ngFor="let brand of brands" [value]="brand">{{brand.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Material Name</mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Item Code</mat-label>
+            <input matInput formControlName="itemcode">
+            <mat-hint>{{lastitemcode}}</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Select Material Type</mat-label>
+            <mat-select formControlName="materialtypes">
+              <mat-option [value]="null">Not Selected</mat-option>
+              <mat-option *ngFor="let materialtype of materialtypes" [value]="materialtype">{{materialtype.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Unit Price</mat-label>
+            <input matInput formControlName="uprice">
+          </mat-form-field>
+
+          <div id="imgpanel">
+            <img [src]="imagematurl">
+            <input id="userImage" hidden="hidden" (change)="selectImage($event)" Select type="file" formControlName="photo">
+            <label for="userImage" id="selectbutton">Select</label>
+            <label id="clearbutton" (click)="clearImage()">Clear</label>
+          </div>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Quantity</mat-label>
+            <input matInput formControlName="quantity">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>ROP</mat-label>
+            <input matInput formControlName="rop">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="descrip">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="intdate" formControlName="dateofintro">
+            <mat-datepicker-toggle matIconSuffix [for]="intdate"></mat-datepicker-toggle>
+            <mat-datepicker #intdate></mat-datepicker>
+          </mat-form-field>
+
+          <div id="butpanel">
+            <button mat-raised-button (click)="add()" [disabled]="!enaadd">Add</button>
+            <button mat-raised-button (click)="clear()">Clear</button>
+            <button mat-raised-button [disabled]="!enaupd">Update</button>
+            <button mat-raised-button [disabled]="!enadel">Delete</button>
+          </div>
+
+        </mat-form>
+
+      </mat-card-content>
+
+    </mat-card>
+  </mat-grid-tile>
+
+
+  <mat-grid-tile [colspan]="8" [rowspan]="4">
+    <mat-card id="ssearch">
+      <mat-card-header>
+        <mat-card-title>Raw Material Search</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <form [formGroup] = "ssearch">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Search by Name</mat-label>
+            <input matInput formControlName = "ssname">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Search by Item Code</mat-label>
+            <input matInput formControlName = "ssitemcode">
+          </mat-form-field>
+          <br>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Search by Category</mat-label>
+            <mat-select formControlName="sscategory">
+              <mat-option value="null">Not Selected</mat-option>
+              <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Search by Material Status</mat-label>
+            <mat-select formControlName="ssmaterialstatus">
+              <mat-option value="null">Not Selected</mat-option>
+              <mat-option *ngFor="let materialstatus of materialstatuses" [value]="materialstatus.id">{{materialstatus.status}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div>
+            <button mat-raised-button color="black" (click)="btnSearchMc()"><mat-icon>search</mat-icon>Search</button>
+            <button mat-raised-button color="black" (click)="btnClearMc()"><mat-icon>reorder</mat-icon>Clear</button>
+          </div>
+
+        </form>
+      </mat-card-content>
+
+    </mat-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile [colspan]="8" [rowspan]="6">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Raw Material Table</mat-card-title>
+        <div id="loading">
+          <img [src]="imageurl">
+        </div>
+      </mat-card-header>
+
+      <mat-card-content>
+        <mat-table [dataSource]="data">
+
+          <ng-container *ngFor="let column of columns;let i = index;" [matColumnDef]="column">
+            <mat-header-cell *matHeaderCellDef> {{headers[i]}} </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ uiassist.getProperty(element, binders[i]) }} </mat-cell>
+          </ng-container>
+
+          <ng-container *ngFor="let cscolumn of cscolumns;let i = index;" [matColumnDef]="cscolumn">
+            <mat-header-cell *matHeaderCellDef>
+              <mat-form [formGroup]="cssearch" class="cssearch">
+                <mat-form-field appearance="outline">
+                  <mat-label>{{csprompts[i]}}</mat-label>
+                  <input matInput [formControlName]="cscolumn" (keyup)="filterTable()">
+                </mat-form-field>
+              </mat-form>
+            </mat-header-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+          <mat-header-row *matHeaderRowDef="cscolumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: columns;" (click)="fillForm(row)" [ngClass]="{'selected-row': row === selectedrow}"></mat-row>
+
+        </mat-table>
+
+        <mat-paginator [length]="20" [pageSize]="3" [pageSizeOptions]="[3,5,10,20]"></mat-paginator>
+
+      </mat-card-content>
+
+    </mat-card>
+  </mat-grid-tile>
+
+</mat-grid-list>
+

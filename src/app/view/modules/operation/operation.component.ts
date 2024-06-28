@@ -246,7 +246,7 @@ export class OperationComponent {
 
       confirm.afterClosed().subscribe(async result => {
         if (result) {
-          // console.log("Customerservice.add(emp)");
+          // console.log("Employeeservice.add(emp)");
 
           this.ps.add(this.operation).then((responce: [] | undefined) => {
             //console.log("Res-" + responce);
@@ -370,7 +370,7 @@ export class OperationComponent {
         });
         confirm.afterClosed().subscribe(async result => {
           if (result) {
-            //console.log("Customerservice.update()");
+            //console.log("Employeeservice.update()");
             this.operation = this.form.getRawValue();
 
             this.operation.id = this.oldoperation.id;

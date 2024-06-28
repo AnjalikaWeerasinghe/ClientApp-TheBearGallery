@@ -1,4 +1,4 @@
-export class Customerstatus {
+export class Employeestatus {
 
   public id !: number;
   public status !: string;

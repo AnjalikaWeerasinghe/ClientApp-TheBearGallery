@@ -1,7 +1,7 @@
 import {Userstatus} from "./userstatus";
 import {Userrole} from "./userrole";
 import {Usertype} from "./usertype";
-import {Customer} from "./customer";
+import {Employee} from "./employee";
 
 export class User{
 
@@ -16,7 +16,7 @@ export class User{
   public docreated!:string;
   public userstatus !: Userstatus;
   public usertype !: Usertype;
-  public customer !: Customer;
+  public employee !: Employee;
 
   constructor() {
 

@@ -3,7 +3,7 @@ mat-card {  width: 100%;  height:100%;  margin: 10px 10px -10px 10px ; }
 
 mat-card-content { overflow: auto; height: 100%; }
 
-mat-card-header { background: #c0d9c3; }
+mat-card-header { background: lightskyblue; }
 
 #loading img{ width: 30px; height: 25px; margin-left: 200px;}
 
@@ -13,11 +13,11 @@ mat-card-header { background: #c0d9c3; }
 
 #ssearch mat-form-field { padding-left: 15px; width: 200px; }
 
-#ssearch button{ width: 195px; margin-left:10px; margin-top: 5px; background-color: #435f3b; color: white}
+#ssearch button{ width: 195px; margin-left:10px; margin-top: 5px; background-color: lightblue; color: black}
 
 #userform { padding-top: 20px; }
 
-#butpanel button{ width: 82px;margin:3px;background-color: #435f3b;color: white;}
+#butpanel button{ width: 82px;margin:3px;background-color: lightblue ;color: black;}
 
 #listtrnasfer {display: inline-flex; margin-bottom: 30px;margin-left: 10px}
 
@@ -29,7 +29,7 @@ mat-card-header { background: #c0d9c3; }
 
 .list .mat-mdc-list-item .mdc-list-item__primary-text{ font-size: 14px!important;}
 
-.selected-row{ background-color: #c9e6ff!important; }
+.selected-row{ background-color: lightblue!important; }
 
 .mat-row:hover { background-color: inherit!important; }
 

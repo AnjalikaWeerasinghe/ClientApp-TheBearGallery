@@ -1,27 +1,23 @@
-
-  <mat-card class="background">
-    <mat-card-content>
+<mat-card class="background">
+  <mat-card-content>
       <mat-toolbar>
         <mat-toolbar-row>
-
-          <mat-list-item>
+          <span>
             <a routerLink="home" id="home"><mat-icon>home</mat-icon>The Bear Gallery</a>
-          </mat-list-item>
+          </span>
 
           <span class="toolbar-right">
-          <label class="lbl-user">{{authService.getUsername().toUpperCase()}}</label>
-          <img src="assets/99945.png" class="img-user"/>
-          <button mat-icon-button matTooltip="Logout" (click)="logout()" class="btn-logout"><mat-icon>power_settings_new</mat-icon> </button>
-        </span>
-        </mat-toolbar-row>
-
+            <label class="lbl-user">{{authService.getUsername().toUpperCase()}}</label>
+            <img src="assets/99945.png" class="img-user"/>
+            <button mat-icon-button matTooltip="Logout" (click)="logout()" class="btn-logout"><mat-icon>power_settings_new</mat-icon> </button>
+          </span>
+      </mat-toolbar-row>
       </mat-toolbar>
-
-      <mat-card-content>
-        <router-outlet></router-outlet>
-      </mat-card-content>
-
   </mat-card-content>
+  <mat-card-content class="content">
+    <router-outlet></router-outlet>
+  </mat-card-content>
+
 </mat-card>
 
 

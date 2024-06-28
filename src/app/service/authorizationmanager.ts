@@ -7,49 +7,23 @@ export class AuthorizationManager {
   private readonly localStorageUserName = 'username';
   private readonly localStorageButtonKey = 'buttonState';
   private readonly localStorageAdmMenus = 'admMenuState'; //Admin
-  private readonly localStoragePrdMenus = 'prdMenuState'; //Products
-  private readonly localStorageSupMenus = 'supMenuState'; //Suppliers
-  private readonly localStorageOrdMenus = 'ordMenuState'; //Orders
-  private readonly localStorageResMenus = 'resMenuState'; //Resources
+  private readonly localStorageInvMenus = 'invMenuState';
 
   public enaadd = false;
   public enaupd = false;
   public enadel = false;
 
   admMenuItems = [
-    { name: 'Employee', accessFlag: true, routerLink: 'employee' },
-    { name: 'User', accessFlag: true, routerLink: 'user' },
-    { name: 'Privilege', accessFlag: true, routerLink: 'privilege' },
-    { name: 'Operations', accessFlag: true, routerLink: 'operation' }
+    { name: 'Employee', accessFlag: true, routerLink: '/admin/employee' },
+    { name: 'User', accessFlag: true, routerLink: '/admin/user' },
+    { name: 'Privilege', accessFlag: true, routerLink: '/admin/privilege' },
+    { name: 'Operations', accessFlag: true, routerLink: '/admin/operation' }
   ];
 
-  prdMenuItems = [
-    { name: 'Products', accessFlag: true, routerLink: 'products' },
-    { name: 'Designs', accessFlag: true, routerLink: 'design' },
-    { name: 'Status', accessFlag: true, routerLink: 'status' },
-    { name: 'Product Warehouses', accessFlag: true, routerLink: 'prowarehouse' }
-    //{ name: 'Course Material', accessFlag: true, routerLink: 'crsmaterial' }
+  invMenuItems = [
+    {name: 'Material', accessFlag: true, routerLink: '/inventory/material'},
+    {name: 'Product', accessFlag: true, routerLink: '/inventory/products'}
   ];
-
-  supMenuItems = [
-    { name: 'Suppliers', accessFlag: true, routerLink: 'suppliers' },
-    { name: 'Supply Material', accessFlag: true, routerLink: 'supplymaterial' },
-    { name: 'Supply Payments', accessFlag: true, routerLink: 'suppayments' },
-    { name: 'Purchase Orders', accessFlag: true, routerLink: 'purorders' }
-  ];
-
-  ordMenuItems = [
-    { name: 'Customers', accessFlag: true, routerLink: 'customers' },
-    { name: 'Orders', accessFlag: true, routerLink: 'orders' },
-    { name: 'Order Payments', accessFlag: true, routerLink: 'ordpayments' }
-  ];
-
-  resMenuItems=[
-    {name:'Raw Materials', accessFlag: true, routerLink: 'rawmaterials'},
-    {name:'Material Distribution', accessFlag: true, routerLink: 'matdistribution'},
-    {name:'Raw Mat. Warehouses', accessFlag: true, routerLink: 'rawwarehouses'},
-  ];
-
 
   constructor(private am: AuthoritySevice) {}
 
@@ -67,30 +41,13 @@ export class AuthorizationManager {
       menuItem.accessFlag = modules.some(module => module.module.toLowerCase() === menuItem.name.toLowerCase());
     });
 
-    //production
-    this.prdMenuItems.forEach(menuItem => {
-      menuItem.accessFlag = modules.some(module => module.module.toLowerCase() === menuItem.name.toLowerCase());
-    });
-
-    this.supMenuItems.forEach(menuItem => {
-      menuItem.accessFlag = modules.some(module => module.module.toLowerCase() === menuItem.name.toLowerCase());
-    });
-
-    this.ordMenuItems.forEach(menuItem => {
-      menuItem.accessFlag = modules.some(module => module.module.toLowerCase() === menuItem.name.toLowerCase());
-    });
-
-    this.resMenuItems.forEach(menuItem=> {
+    this.invMenuItems.forEach(menuItem=> {
       menuItem.accessFlag = modules.some(module => module.module.toLowerCase() === menuItem.name.toLowerCase());
     })
 
     // Save menu state in localStorage
     localStorage.setItem(this.localStorageAdmMenus, JSON.stringify(this.admMenuItems));
-    localStorage.setItem(this.localStoragePrdMenus, JSON.stringify(this.prdMenuItems));
-    localStorage.setItem(this.localStorageSupMenus, JSON.stringify(this.supMenuItems));
-    localStorage.setItem(this.localStorageOrdMenus, JSON.stringify(this.ordMenuItems));
-    localStorage.setItem(this.localStorageResMenus, JSON.stringify(this.resMenuItems));
-
+    localStorage.setItem(this.localStorageInvMenus, JSON.stringify(this.invMenuItems));
   }
 
 
@@ -154,25 +111,11 @@ export class AuthorizationManager {
       this.admMenuItems = JSON.parse(admMenuState);
     }
 
-    const prdMenuState = localStorage.getItem(this.localStoragePrdMenus);
-    if (prdMenuState) {
-      this.prdMenuItems = JSON.parse(prdMenuState);
+    const invMenuState = localStorage.getItem(this.localStorageInvMenus);
+    if (invMenuState) {
+      this.invMenuItems = JSON.parse(invMenuState);
     }
 
-    const supMenuState = localStorage.getItem(this.localStorageSupMenus);
-    if (supMenuState) {
-      this.supMenuItems = JSON.parse(supMenuState);
-    }
-
-    const ordMenuState = localStorage.getItem(this.localStorageOrdMenus);
-    if (ordMenuState) {
-      this.ordMenuItems = JSON.parse(ordMenuState);
-    }
-
-    const resMenuState = localStorage.getItem(this.localStorageResMenus);
-    if (resMenuState){
-      this.resMenuItems = JSON.parse(resMenuState);
-    }
   }
 
   clearUsername(): void {
@@ -185,10 +128,8 @@ export class AuthorizationManager {
 
   clearMenuState(): void {
     localStorage.removeItem(this.localStorageAdmMenus);
-    localStorage.removeItem(this.localStoragePrdMenus);
-    localStorage.removeItem(this.localStorageSupMenus);
-    localStorage.removeItem(this.localStorageOrdMenus);
-    localStorage.removeItem(this.localStorageResMenus);
+    localStorage.removeItem(this.localStorageInvMenus);
+
   }
 
   isMenuItemDisabled(menuItem: { accessFlag: boolean }): boolean {

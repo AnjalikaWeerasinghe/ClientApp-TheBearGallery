@@ -1,0 +1,67 @@
+mat-toolbar-row {
+  display: flex;
+  justify-content: space-between;
+  width: 10%;
+  align-items: center;
+  background-color: transparent;
+}
+
+.toolbar-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.btn-nav.mat-mdc-icon-button {
+  background-color: darkblue;
+  color: #ffffff;
+  vertical-align: middle;
+  box-shadow: 1px 1px 6px #333333;
+  border: #c0d9c3 solid 2px;
+  padding: 10px;
+  --mat-mdc-button-ripple-color: rgba(255, 255, 255, 0.2);
+}
+
+mat-sidenav-container {
+  height: 0%;
+  width: 100%;
+}
+
+mat-sidenav {
+  width: 13%;
+  margin: 0;
+}
+
+mat-sidenav mat-nav-list mat-list-item a {
+  font-size: 14px;
+  text-decoration: none;
+  color: blue;
+  font-family: "Times New Roman";
+}
+
+mat-sidenav mat-icon {
+  font-size: 17px;
+  margin: 0px 0px -10px 0px;
+}
+
+mat-nav-list mat-list-item {
+  height: 35px;
+  font-size: 19px;
+  padding: 0px 10px 0px 10px;
+  font-family: "Times New Roman";
+}
+
+mat-nav-list mat-list-item:hover {
+  background: lightskyblue;
+}
+
+.lbl-menu {
+  font-size: 19px;
+  color: darkblue;
+  margin: 0px 0px 0px 10px;
+  font-family: "Times New Roman";
+  font-weight: lighter;
+}
+
+
+

@@ -24,25 +24,29 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {Customerservice} from "./service/customerservice";
+import {EmployeeService} from "./service/employeeservice";
 import {MatSelectModule} from "@angular/material/select";
 import {ConfirmComponent} from "./util/dialog/confirm/confirm.component";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {DatePipe} from "@angular/common";
 import {MatChipsModule} from "@angular/material/chips";
-import { PrivilageComponent } from './view/modules/privilage/privilage.component';
+import { PrivilegeComponent } from './view/modules/privilege/privilege.component';
 import {JwtInterceptor} from "./service/JwtInterceptor";
 import {AuthorizationManager} from "./service/authorizationmanager";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { OperationComponent } from './view/modules/operation/operation.component';
-import { PaymentComponent } from './view/modules/payment/payment.component';
 import {MatMenuModule} from "@angular/material/menu";
 import {DashboardComponent} from './view/dashboard/dashboard.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatSortModule} from "@angular/material/sort";
-import { CustomerComponent } from './view/modules/customer/customer.component';
 import { MaterialComponent } from './view/modules/material/material.component';
+import { InventoryComponent } from './view/inventory/inventory.component';
+import { AdminComponent } from './view/admin/admin.component';
+import {EmployeeComponent} from "./view/modules/employee/employee.component";
+import { ProductComponent } from './view/modules/product/product.component';
+import { SupplierComponent } from './view/modules/supplier/supplier.component';
+import { CustomerComponent } from './view/modules/customer/customer.component';
 
 
 @NgModule({
@@ -54,12 +58,16 @@ import { MaterialComponent } from './view/modules/material/material.component';
     UserComponent,
     ConfirmComponent,
     MessageComponent,
-    PrivilageComponent,
+    PrivilegeComponent,
     OperationComponent,
-    PaymentComponent,
     DashboardComponent,
-    CustomerComponent,
     MaterialComponent,
+    InventoryComponent,
+    AdminComponent,
+    EmployeeComponent,
+    ProductComponent,
+    SupplierComponent,
+    CustomerComponent,
   ],
   imports: [
     MatDatepickerModule,
@@ -91,7 +99,7 @@ import { MaterialComponent } from './view/modules/material/material.component';
   ],
   providers: [
     OperationComponent,
-    Customerservice,
+    EmployeeService,
     DatePipe,
     AuthorizationManager,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }

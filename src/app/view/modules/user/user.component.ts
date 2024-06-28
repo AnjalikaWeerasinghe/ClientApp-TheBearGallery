@@ -2,7 +2,7 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatSelectionList, MatSelectionListChange} from "@angular/material/list";
 import {Userstatus} from "../../../entity/userstatus";
-import {Customerservice} from "../../../service/customerservice";
+import {EmployeeService} from "../../../service/employeeservice";
 import {UserstatusService} from "../../../service/userstatusservice";
 import {Roleservice} from "../../../service/roleservice";
 import {Role} from "../../../entity/role";
@@ -21,7 +21,7 @@ import {AuthoritySevice} from "../../../service/authoritysevice";
 import {AuthorizationManager} from "../../../service/authorizationmanager";
 import {Usertype} from "../../../entity/usertype";
 import {Usertypeservice} from "../../../service/usertypeservice";
-import {Customer} from "../../../entity/customer";
+import {Employee} from "../../../entity/employee";
 
 @Component({
   selector: 'app-user',
@@ -34,7 +34,7 @@ export class UserComponent implements OnInit{
   public ssearch!: FormGroup;
   public csearch!: FormGroup;
 
-  customers: Array<Customer> = [];
+  employees: Array<Employee> = [];
   userstatues: Array<Userstatus> = [];
   usertypes: Array<Usertype> = [];
   users: Array<User> = [];
@@ -44,7 +44,6 @@ export class UserComponent implements OnInit{
   oldroles:Array<Role>=[];
   @Input()selectedroles: Array<Role> =[];
 
-
   user!:User;
   olduser!:User;
 
@@ -52,12 +51,12 @@ export class UserComponent implements OnInit{
   @ViewChild('selectedlist') selectedlist!: MatSelectionList;
 
 
-  columns: string[] = ['customer', 'username', 'docreated', 'userstatus','role','description','toreated'];
-  headers: string[] = ['Customer', 'Username', 'DoCreated', 'Status','Role','Description','To Ceated'];
-  binders: string[] = ['customer.name', 'username', 'getDate()', 'usestatus.name','getRole()','description','tocreated'];
+  columns: string[] = ['employee', 'username', 'docreated', 'userstatus','role','description','toreated'];
+  headers: string[] = ['Employee', 'Username', 'Date of Created', 'Status','Role','Description','To Ceated'];
+  binders: string[] = ['employee.callingname', 'username', 'getDate()', 'userstatus.name','getRole()','description','tocreated'];
 
-  cscolumns: string[] = ['cscustomer', 'csusername', 'csdocreated', 'csuserstatus','csrole','csdescription','cstocreated'];
-  csprompts: string[] = ['Search by Customer', 'Search by Username', 'Search by DoCreated',
+  cscolumns: string[] = ['csemployee', 'csusername', 'csdocreated', 'csuserstatus','csrole','csdescription','cstocreated'];
+  csprompts: string[] = ['Search by Employee', 'Search by Username', 'Search by DoCreated',
     'Search by User Status','Search by Role','Search by Description','Search by To created'];
 
   imageurl: string = '';
@@ -79,7 +78,7 @@ export class UserComponent implements OnInit{
 
   constructor(
     private fb:FormBuilder,
-    private es:Customerservice,
+    private es:EmployeeService,
     private ut:UserstatusService,
     private ust:Usertypeservice,
     private rs:Roleservice,
@@ -94,7 +93,7 @@ export class UserComponent implements OnInit{
     this.user = new User();
 
     this.csearch = this.fb.group({
-      "cscustomer": new FormControl(),
+      "csemployee": new FormControl(),
       "csusername": new FormControl(),
       "csdocreated": new FormControl(),
       "csuserstatus": new FormControl(),
@@ -105,7 +104,7 @@ export class UserComponent implements OnInit{
     });
 
     this.form = this.fb.group({
-      "customer": new FormControl('',[Validators.required]),
+      "employee": new FormControl('',[Validators.required]),
       "username": new FormControl('',[Validators.required]),
       "password": new FormControl('',[Validators.required]),
       "confirmpassword": new FormControl(),
@@ -118,7 +117,7 @@ export class UserComponent implements OnInit{
     });
 
     this.ssearch = this.fb.group({
-      "sscustomer": new FormControl(),
+      "ssemployee": new FormControl(),
       "ssusername": new FormControl(),
       "ssrole": new FormControl(),
     });
@@ -135,8 +134,8 @@ export class UserComponent implements OnInit{
 
     this.createView();
 
-    this.es.getAllListNameId().then((custs: Customer[]) => {
-      this.customers = custs;
+    this.es.getAllListNameId().then((custs: Employee[]) => {
+      this.employees = custs;
     });
 
     this.ut.getAllList().then((usts:Userstatus[]) => {
@@ -197,14 +196,14 @@ export class UserComponent implements OnInit{
 
 
   createForm() {
-    this.form.controls['customer'].setValidators([Validators.required]);
+    this.form.controls['employee'].setValidators([Validators.required]);
     this.form.controls['username'].setValidators([Validators.required, Validators.pattern(this.regexes['username']['regex'])]);
     this.form.controls['password'].setValidators([Validators.required, Validators.pattern(this.regexes['password']['regex'])]);
     this.form.controls['confirmpassword'].setValidators([Validators.required, Validators.pattern(this.regexes['password']['regex'])]);
     this.form.controls['docreated'].setValidators([Validators.required]);
     this.form.controls['tocreated'].setValidators([Validators.required]);
-    this.form.controls['usestatus'].setValidators([Validators.required]);
-    this.form.controls['usetype'].setValidators([Validators.required]);
+    this.form.controls['userstatus'].setValidators([Validators.required]);
+    this.form.controls['usertype'].setValidators([Validators.required]);
     this.form.controls['description'].setValidators([Validators.required, Validators.pattern(this.regexes['description']['regex'])]);
     this.form.controls['userroles'].setValidators([Validators.required]);
     Object.values(this.form.controls).forEach( control => { control.markAsTouched(); } );
@@ -286,7 +285,7 @@ export class UserComponent implements OnInit{
     const csearchdata = this.csearch.getRawValue();
 
     this.data.filterPredicate = (user: User, filter: string) => {
-      return (csearchdata.cscustomer == null || user.customer.name.toLowerCase().includes(csearchdata.csecustomer)) &&
+      return (csearchdata.csemployee == null || user.employee.callingname.toLowerCase().includes(csearchdata.csemployee)) &&
         (csearchdata.csusername == null || user.username.toLowerCase().includes(csearchdata.csusername)) &&
         (csearchdata.csdocreated == null || user.docreated.toLowerCase().includes(csearchdata.csdocreated)) &&
         (csearchdata.csuserstatus == null || user.userstatus.name.toLowerCase().includes(csearchdata.csuserstatus));
@@ -298,12 +297,12 @@ export class UserComponent implements OnInit{
 
   btnSearchMc(): void {
     const ssearchdata = this.ssearch.getRawValue();
-    let customer = ssearchdata.sscustomer;
+    let employee = ssearchdata.ssemployee;
     let username = ssearchdata.ssusername;
     let roleid = ssearchdata.ssrole;
     let query = "";
 
-    if (customer != null && customer.trim() !== "") query = query + "&customer=" + customer;
+    if (employee != null && employee.trim() !== "") query = query + "&employee=" + employee;
     if (username != null && username.trim() !== "") query = query + "&username=" + username;
     if (roleid != null) query = query + "&roleid=" + roleid;
 
@@ -401,7 +400,7 @@ export class UserComponent implements OnInit{
 
       let userdata: string = "";
 
-      userdata = userdata + "<br>Customer is : " + this.user.customer.name;
+      userdata = userdata + "<br>Employee is : " + this.user.employee.callingname;
       userdata = userdata + "<br>Username is : " + this.user.username;
       userdata = userdata + "<br>Password is : " + this.user.password;
 
@@ -418,7 +417,7 @@ export class UserComponent implements OnInit{
 
       confirm.afterClosed().subscribe(async result => {
         if (result) {
-          // console.log("Customerservice.add(emp)");
+          // console.log("Employeeservice.add(emp)");
 
           console.log(JSON.stringify(this.user));
           this.us.add(this.user).then((responce: [] | undefined) => {
@@ -532,13 +531,13 @@ export class UserComponent implements OnInit{
         const confirm = this.dg.open(ConfirmComponent, {
           width: '500px',
           data: {
-            heading: "Confirmation - Customer Update",
+            heading: "Confirmation - Employee Update",
             message: "Are you sure to Save folowing Updates? <br> <br>" + updates
           }
         });
         confirm.afterClosed().subscribe(async result => {
           if (result) {
-            //console.log("Customerservice.update()");
+            //console.log("Employeeservice.update()");
             this.user = this.form.getRawValue();
 
             this.us.update(this.user).then((responce: [] | undefined) => {
@@ -568,7 +567,7 @@ export class UserComponent implements OnInit{
 
               const stsmsg = this.dg.open(MessageComponent, {
                 width: '500px',
-                data: {heading: "Status -Customer Add", message: updmessage}
+                data: {heading: "Status -Employee Add", message: updmessage}
               });
               stsmsg.afterClosed().subscribe(async result => { if (!result) { return; } });
 
@@ -580,7 +579,7 @@ export class UserComponent implements OnInit{
 
         const updmsg = this.dg.open(MessageComponent, {
           width: '500px',
-          data: {heading: "Confirmation - Customer Update", message: "Nothing Changed"}
+          data: {heading: "Confirmation - Employee Update", message: "Nothing Changed"}
         });
         updmsg.afterClosed().subscribe(async result => { if (!result) { return; } });
 
