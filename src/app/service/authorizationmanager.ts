@@ -8,7 +8,8 @@ export class AuthorizationManager {
   private readonly localStorageButtonKey = 'buttonState';
   private readonly localStorageAdmMenus = 'admMenuState'; //Admin
   private readonly localStorageInvMenus = 'invMenuState'; //Inventory
-  private readonly localStoragePurMenus = 'purMenuState'; //Purchases
+  private readonly localStoragePurMenus = 'purMenuState';//Purchases
+  private readonly localStorageSalMenus = 'salMenuState';
 
   public enaadd = false;
   public enaupd = false;
@@ -22,12 +23,18 @@ export class AuthorizationManager {
   ];
 
   invMenuItems = [
-    {name: 'Material', accessFlag: true, routerLink: 'material'},
-    {name: 'Product', accessFlag: true, routerLink: 'product'}
+    {name: 'Materials', accessFlag: true, routerLink: 'material'},
+    {name: 'Products', accessFlag: true, routerLink: 'product'}
   ];
 
   purMenuItems = [
-    {name: 'Supplier', accessFlag: true, routerLink: 'supplier'}
+    {name: 'Suppliers', accessFlag: true, routerLink: 'supplier'},
+    {name: 'Purchase Orders', accessFlag: true, routerLink: 'purchaseorder'}
+  ];
+
+  salMenuItems = [
+    {name: 'Customers', accessFlag: true, routerLink: 'customer'},
+    {name: 'Sales Orders', accessFlag: true, routerLink: 'saleorder'}
   ];
 
   constructor(private am: AuthoritySevice) {}
@@ -54,10 +61,15 @@ export class AuthorizationManager {
       menuItem.accessFlag = modules.some(module => module.module.toLowerCase() === menuItem.name.toLowerCase());
     });
 
+    this.salMenuItems.forEach(menuItem=> {
+      menuItem.accessFlag = modules.some(module => module.module.toLowerCase() === menuItem.name.toLowerCase());
+    });
+
     // Save menu state in localStorage
     localStorage.setItem(this.localStorageAdmMenus, JSON.stringify(this.admMenuItems));
     localStorage.setItem(this.localStorageInvMenus, JSON.stringify(this.invMenuItems));
     localStorage.setItem(this.localStoragePurMenus, JSON.stringify(this.purMenuItems));
+    localStorage.setItem(this.localStorageSalMenus, JSON.stringify(this.salMenuItems));
   }
 
 
@@ -131,6 +143,11 @@ export class AuthorizationManager {
       this.purMenuItems = JSON.parse(purMenuState);
     }
 
+    const salMenuState = localStorage.getItem(this.localStorageSalMenus);
+    if (salMenuState) {
+      this.salMenuItems = JSON.parse(salMenuState);
+    }
+
   }
 
   clearUsername(): void {
@@ -145,6 +162,7 @@ export class AuthorizationManager {
     localStorage.removeItem(this.localStorageAdmMenus);
     localStorage.removeItem(this.localStorageInvMenus);
     localStorage.removeItem(this.localStoragePurMenus);
+    localStorage.removeItem(this.localStorageSalMenus);
   }
 
   isMenuItemDisabled(menuItem: { accessFlag: boolean }): boolean {

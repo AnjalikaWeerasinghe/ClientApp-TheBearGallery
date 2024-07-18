@@ -63,6 +63,23 @@
         </ng-container>
       </mat-expansion-panel>
 
+      <mat-expansion-panel *ngIf="isMenuVisible('Sales')">
+        <mat-expansion-panel-header>
+          <mat-list-item><a>
+            <mat-icon>toys</mat-icon>
+            Sales</a></mat-list-item>
+        </mat-expansion-panel-header>
+        <ng-container *ngFor="let menuItem of salMenuItems">
+          <mat-list-item *ngIf="menuItem.accessFlag">
+            <mat-list-item class="item" [routerLink]="menuItem.accessFlag ? menuItem.routerLink : null"><a>{{ menuItem.name }}</a></mat-list-item>
+          </mat-list-item>
+        </ng-container>
+      </mat-expansion-panel>
+
+      <mat-list-item>
+        <a routerLink="dailyproduction"><mat-icon>poll</mat-icon>Daily Production</a>
+      </mat-list-item>
+
       <mat-list-item>
         <a routerLink="report"><mat-icon>poll</mat-icon>Report</a>
       </mat-list-item>

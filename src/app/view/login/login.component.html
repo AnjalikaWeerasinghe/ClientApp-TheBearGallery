@@ -25,14 +25,18 @@
               <input matInput type="password" formControlName="password">
             </mat-form-field>
 
+            <mat-checkbox formControlName="rememberMe">
+              <mat-label id="rememberMe">Remember Me</mat-label>
+            </mat-checkbox>
+
             <mat-card-actions align="end">
               <button btn-a mat-raised-button (click)="authenticate()">Login</button>
             </mat-card-actions>
 
-            <mat-card-actions id="signup">
-              <mat-label>Don't have an account?</mat-label>
-              <a id="sign" mat-button (click)="signup()">Sign Up</a>
-            </mat-card-actions>
+<!--            <mat-card-actions id="signup">-->
+<!--              <mat-label>Don't have an account?</mat-label>-->
+<!--              <a id="sign" mat-button (click)="signup()">Sign Up</a>-->
+<!--            </mat-card-actions>-->
 
           </form>
         </mat-card-content>

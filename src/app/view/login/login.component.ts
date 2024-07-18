@@ -91,6 +91,11 @@ export class LoginComponent implements OnInit{
 
   ngOnInit(): void {
     // this.ut.initializeMenuState();
+    this.loginform = this.fb.group({
+      username: [''],
+      password: [''],
+      rememberMe: [false]
+    });
   }
 
 }

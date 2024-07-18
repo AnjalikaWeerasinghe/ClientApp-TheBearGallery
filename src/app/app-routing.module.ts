@@ -12,6 +12,9 @@ import {EmployeeComponent} from "./view/modules/employee/employee.component";
 import {ProductComponent} from "./view/modules/product/product.component";
 import {SupplierComponent} from "./view/modules/supplier/supplier.component";
 import {CustomerComponent} from "./view/modules/customer/customer.component";
+import {PurchaseorderComponent} from "./view/modules/purchaseorder/purchaseorder.component";
+import {SalesorderComponent} from "./view/modules/salesorder/salesorder.component";
+import {DailyproductionComponent} from "./view/dailyproduction/dailyproduction.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -23,6 +26,8 @@ const routes: Routes = [
       {path: "home", component: HomeComponent},
       {path: "dashboard", component: DashboardComponent},
       {path: "home/dashboard", redirectTo: 'dashboard', pathMatch: 'full'},
+      {path: "dailyproduction", component: DailyproductionComponent},
+      {path: "home/dailyproduction", redirectTo: 'dailyproduction', pathMatch: 'full'},
       {path: "employee", component: EmployeeComponent},
       {path: "home/employee", redirectTo: 'employee', pathMatch: 'full'},
       {path: "user", component: UserComponent},
@@ -35,8 +40,10 @@ const routes: Routes = [
       {path: "home/product", redirectTo: 'product', pathMatch: 'full'},
       {path:"supplier",component:SupplierComponent},
       {path: "home/supplier", redirectTo: 'supplier', pathMatch: 'full'},
+      {path:"purchaseorder",component:PurchaseorderComponent},
       {path:"customer",component:CustomerComponent},
       {path: "home/customer", redirectTo: 'customer', pathMatch: 'full'},
+      {path:"salesorder",component:SalesorderComponent},
     ]
     //{ path: '**', redirectTo: 'login', pathMatch: 'full' } // Redirect any other route to login
   }];

@@ -28,6 +28,7 @@ export class MainwindowComponent {
     admMenuItems = this.authService.admMenuItems;
     invMenuItems = this.authService.invMenuItems;
     purMenuItems = this.authService.purMenuItems;
+    salMenuItems = this.authService.salMenuItems;
 
   isMenuVisible(category: string): boolean {
     switch (category) {
@@ -37,6 +38,8 @@ export class MainwindowComponent {
         return this.invMenuItems.some(menuItem => menuItem.accessFlag);
       case 'Purchases':
         return this.purMenuItems.some(menuItem => menuItem.accessFlag);
+      case 'Sales':
+        return this.salMenuItems.some(menuItem => menuItem.accessFlag);
       default:
         return false;
     }

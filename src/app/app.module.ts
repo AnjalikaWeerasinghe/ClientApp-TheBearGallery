@@ -45,6 +45,10 @@ import {EmployeeComponent} from "./view/modules/employee/employee.component";
 import { ProductComponent } from './view/modules/product/product.component';
 import { SupplierComponent } from './view/modules/supplier/supplier.component';
 import { CustomerComponent } from './view/modules/customer/customer.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import { PurchaseorderComponent } from './view/modules/purchaseorder/purchaseorder.component';
+import { SalesorderComponent } from './view/modules/salesorder/salesorder.component';
+import { DailyproductionComponent } from './view/dailyproduction/dailyproduction.component';
 
 
 @NgModule({
@@ -64,6 +68,9 @@ import { CustomerComponent } from './view/modules/customer/customer.component';
     ProductComponent,
     SupplierComponent,
     CustomerComponent,
+    PurchaseorderComponent,
+    SalesorderComponent,
+    DailyproductionComponent,
   ],
   imports: [
     MatDatepickerModule,
@@ -92,6 +99,7 @@ import { CustomerComponent } from './view/modules/customer/customer.component';
     MatMenuModule,
     MatTooltipModule,
     MatSortModule,
+    MatCheckboxModule,
   ],
   providers: [
     OperationComponent,
