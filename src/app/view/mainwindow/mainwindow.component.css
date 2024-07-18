@@ -1,30 +1,31 @@
 /* Tool Bar */
-.background{
+mat-toolbar{
   background: linear-gradient(40deg, darkblue, cadetblue) ;
 
 }
 
 #home{
   position: absolute;
-  left: 0px;
-  top: 10px;
+  align-items: center;
+  left: 50px;
+  top: 0px;
   width: 100px;
   text-decoration: none;
   display: block;
   font-size: 20px;
-  margin: 25px 0 0 25px ;
+  margin: 10px;
 }
 
-mat-toolbar-row #toolbar-left {
+.toolbar-left {
   display: flex;
-  justify-content: left;
+  justify-content: flex-start;
   align-items: center;
   position: fixed;
   float: left;
 }
 
 mat-toolbar{
-  background: none;
+  background: linear-gradient(40deg, darkblue, cadetblue) ;;
   margin-left: 0;
   margin-bottom: 15px;
   position: inherit ;
@@ -35,15 +36,14 @@ mat-toolbar-row {
   justify-content: space-between;
   width: 100%;
   align-items: center;
-  float: left;
-
 }
 
 .toolbar-right {
+  margin-left: 1150px;
   display: flex;
-  justify-content: left;
+  justify-content: flex-end;
   align-items: center;
-  float: left;
+  float: right;
 }
 
 
@@ -76,21 +76,22 @@ mat-toolbar-row {
 
 
 /* Side Navigation */
-/*
+
 mat-sidenav-container {
   height: 100%;
+  color: white;
 }
 
 mat-sidenav {
   width: 15%;
 }
-*/
+
 mat-toolbar a {
   font-size: 20px;
   text-decoration: none;
   color: white;
   justify-content: flex-start;
-  justify-items: left;
+  /*justify-items: center;*/
   font-family: "Times New Roman";
   font-weight: bold;
 }
@@ -105,7 +106,7 @@ mat-toolbar mat-list-item {
   font-size: 13px;
   padding: 0px 5px 0px 10px;
   border-bottom: none;
-  justify-items: left;
+  justify-items: center;
 }
 
 mat-toolbar mat-list-item:hover {
@@ -117,7 +118,7 @@ mat-toolbar mat-expansion-panel {
   box-shadow: none;
   border-radius: 10px;
   border: none;
-  background-color: transparent;
+  background-color: darkblue;
 }
 
 mat-toolbar mat-expansion-panel-header {
@@ -140,6 +141,91 @@ mat-toolbar mat-expansion-panel mat-list-item:hover{
 .content{
   background: transparent;
 }
+
+
+mat-toolbar-row {
+  display: flex;
+  justify-content: space-between;
+  width: 10%;
+  align-items: center;
+  background-color: transparent;
+}
+
+.toolbar-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
+mat-sidenav {
+  width: 200px;
+  margin: 0;
+  background-color: transparent;
+  color: white;
+}
+
+mat-sidenav-content {
+  margin-top: 10px; /* Adjust based on the height of your toolbar */
+  width: auto;
+  background-color: white;
+}
+
+.btn-nav.mat-mdc-icon-button {
+  background-color: darkblue;
+  color: #ffffff;
+  vertical-align: middle;
+  box-shadow: 1px 1px 6px #333333;
+  border: #c0d9c3 solid 2px;
+  padding: 10px;
+  --mat-mdc-button-ripple-color: rgba(255, 255, 255, 0.2);
+}
+
+.lbl-menu {
+  font-size: 19px;
+  margin: 0px 0px 0px 10px;
+  font-family: "Times New Roman";
+  font-weight: lighter;
+}
+
+mat-sidenav-container {
+  height: 100%;
+  width: 100%;
+}
+
+mat-sidenav-content{
+  width: 100%;
+  height: 100%;
+}
+
+mat-sidenav a {
+  font-size: 14px;
+  text-decoration: none;
+  color: black;
+  border-right: none;
+}
+
+
+mat-nav-list mat-list-item:hover {
+  background: transparent;
+}
+
+
+mat-sidenav mat-nav-list mat-list-item a {
+  font-size: 14px;
+  text-decoration: none;
+  color: darkblue;
+  font-family: "Times New Roman";
+}
+
+mat-sidenav mat-icon {
+  font-size: 17px;
+  margin: 0px 0px -10px 0px;
+}
+
+
+
+
 
 
 

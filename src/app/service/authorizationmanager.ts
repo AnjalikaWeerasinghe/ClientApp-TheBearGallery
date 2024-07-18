@@ -7,22 +7,27 @@ export class AuthorizationManager {
   private readonly localStorageUserName = 'username';
   private readonly localStorageButtonKey = 'buttonState';
   private readonly localStorageAdmMenus = 'admMenuState'; //Admin
-  private readonly localStorageInvMenus = 'invMenuState';
+  private readonly localStorageInvMenus = 'invMenuState'; //Inventory
+  private readonly localStoragePurMenus = 'purMenuState'; //Purchases
 
   public enaadd = false;
   public enaupd = false;
   public enadel = false;
 
   admMenuItems = [
-    { name: 'Employee', accessFlag: true, routerLink: '/admin/employee' },
-    { name: 'User', accessFlag: true, routerLink: '/admin/user' },
-    { name: 'Privilege', accessFlag: true, routerLink: '/admin/privilege' },
-    { name: 'Operations', accessFlag: true, routerLink: '/admin/operation' }
+    { name: 'Employee', accessFlag: true, routerLink: 'employee' },
+    { name: 'User', accessFlag: true, routerLink: 'user' },
+    { name: 'Privilege', accessFlag: true, routerLink: 'privilege' },
+    { name: 'Operations', accessFlag: true, routerLink: 'operation' }
   ];
 
   invMenuItems = [
-    {name: 'Material', accessFlag: true, routerLink: '/inventory/material'},
-    {name: 'Product', accessFlag: true, routerLink: '/inventory/products'}
+    {name: 'Material', accessFlag: true, routerLink: 'material'},
+    {name: 'Product', accessFlag: true, routerLink: 'product'}
+  ];
+
+  purMenuItems = [
+    {name: 'Supplier', accessFlag: true, routerLink: 'supplier'}
   ];
 
   constructor(private am: AuthoritySevice) {}
@@ -43,11 +48,16 @@ export class AuthorizationManager {
 
     this.invMenuItems.forEach(menuItem=> {
       menuItem.accessFlag = modules.some(module => module.module.toLowerCase() === menuItem.name.toLowerCase());
-    })
+    });
+
+    this.purMenuItems.forEach(menuItem=> {
+      menuItem.accessFlag = modules.some(module => module.module.toLowerCase() === menuItem.name.toLowerCase());
+    });
 
     // Save menu state in localStorage
     localStorage.setItem(this.localStorageAdmMenus, JSON.stringify(this.admMenuItems));
     localStorage.setItem(this.localStorageInvMenus, JSON.stringify(this.invMenuItems));
+    localStorage.setItem(this.localStoragePurMenus, JSON.stringify(this.purMenuItems));
   }
 
 
@@ -116,6 +126,11 @@ export class AuthorizationManager {
       this.invMenuItems = JSON.parse(invMenuState);
     }
 
+    const purMenuState = localStorage.getItem(this.localStoragePurMenus);
+    if (purMenuState) {
+      this.purMenuItems = JSON.parse(purMenuState);
+    }
+
   }
 
   clearUsername(): void {
@@ -129,7 +144,7 @@ export class AuthorizationManager {
   clearMenuState(): void {
     localStorage.removeItem(this.localStorageAdmMenus);
     localStorage.removeItem(this.localStorageInvMenus);
-
+    localStorage.removeItem(this.localStoragePurMenus);
   }
 
   isMenuItemDisabled(menuItem: { accessFlag: boolean }): boolean {

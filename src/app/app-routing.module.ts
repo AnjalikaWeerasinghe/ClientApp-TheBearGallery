@@ -8,10 +8,10 @@ import {PrivilegeComponent} from "./view/modules/privilege/privilege.component";
 import {OperationComponent} from "./view/modules/operation/operation.component";
 import {DashboardComponent} from "./view/dashboard/dashboard.component";
 import {MaterialComponent} from "./view/modules/material/material.component";
-import {InventoryComponent} from "./view/inventory/inventory.component";
-import {AdminComponent} from "./view/admin/admin.component";
 import {EmployeeComponent} from "./view/modules/employee/employee.component";
 import {ProductComponent} from "./view/modules/product/product.component";
+import {SupplierComponent} from "./view/modules/supplier/supplier.component";
+import {CustomerComponent} from "./view/modules/customer/customer.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -20,36 +20,23 @@ const routes: Routes = [
     path: 'main',
     component: MainwindowComponent,
     children: [
-      {path: 'home', component: HomeComponent},
-      {path: 'dashboard', component:DashboardComponent},
-      {path: 'home/dashboard', redirectTo: 'dashboard', pathMatch: 'full'},
-      {
-        path: 'admin',
-        component: AdminComponent,
-        children: [
-          {path: '', redirectTo: 'user', pathMatch: 'full'},
-          {path: 'user', component: UserComponent},
-          {path: 'employee', component:EmployeeComponent},
-          {path: 'employee', redirectTo:'employee', pathMatch:'full'},
-          {path: 'privilege', component:PrivilegeComponent},
-          {path: 'privilege', redirectTo:'privilege', pathMatch:'full'},
-          {path: 'operation', component:OperationComponent},
-          {path: 'operation', redirectTo:'operation', pathMatch:'full'},
-        ]
-      },
-      {path: 'home/admin', redirectTo:'admin', pathMatch:'full'},
-      {
-        path: 'inventory',
-        component:InventoryComponent,
-        children: [
-          {path: 'material', component:MaterialComponent},
-          {path: '', redirectTo:'material', pathMatch:'full'},
-          {path: 'product', component:ProductComponent},
-          {path: 'product', redirectTo:'product', pathMatch:'full'},
-        ]
-      },
-      {path: 'home/inventory', redirectTo:'inventory', pathMatch:'full'},
-
+      {path: "home", component: HomeComponent},
+      {path: "dashboard", component: DashboardComponent},
+      {path: "home/dashboard", redirectTo: 'dashboard', pathMatch: 'full'},
+      {path: "employee", component: EmployeeComponent},
+      {path: "home/employee", redirectTo: 'employee', pathMatch: 'full'},
+      {path: "user", component: UserComponent},
+      {path:"privilege", component: PrivilegeComponent},
+      {path: "home/privilege", redirectTo: 'privilege', pathMatch: 'full'},
+      {path:"operations",component:OperationComponent},
+      {path:"material",component:MaterialComponent},
+      {path: "home/material", redirectTo: 'material', pathMatch: 'full'},
+      {path:"product",component:ProductComponent},
+      {path: "home/product", redirectTo: 'product', pathMatch: 'full'},
+      {path:"supplier",component:SupplierComponent},
+      {path: "home/supplier", redirectTo: 'supplier', pathMatch: 'full'},
+      {path:"customer",component:CustomerComponent},
+      {path: "home/customer", redirectTo: 'customer', pathMatch: 'full'},
     ]
     //{ path: '**', redirectTo: 'login', pathMatch: 'full' } // Redirect any other route to login
   }];

@@ -25,18 +25,21 @@ export class MainwindowComponent {
     this.authService.clearMenuState();
     localStorage.removeItem("Authorization");
   }
-  //   admMenuItems = this.authService.admMenuItems;
-  //   invMenuItems = this.authService.invMenuItems;
-  //
-  // isMenuVisible(category: string): boolean {
-  //   switch (category) {
-  //     case 'Admin':
-  //       return this.admMenuItems.some(menuItem => menuItem.accessFlag);
-  //     case 'Inventory':
-  //       return this.invMenuItems.some(menuItem => menuItem.accessFlag);
-  //     default:
-  //       return false;
-  //   }
-  // }
+    admMenuItems = this.authService.admMenuItems;
+    invMenuItems = this.authService.invMenuItems;
+    purMenuItems = this.authService.purMenuItems;
+
+  isMenuVisible(category: string): boolean {
+    switch (category) {
+      case 'Admin':
+        return this.admMenuItems.some(menuItem => menuItem.accessFlag);
+      case 'Inventory':
+        return this.invMenuItems.some(menuItem => menuItem.accessFlag);
+      case 'Purchases':
+        return this.purMenuItems.some(menuItem => menuItem.accessFlag);
+      default:
+        return false;
+    }
+  }
 
 }

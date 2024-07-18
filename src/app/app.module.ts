@@ -41,8 +41,6 @@ import {DashboardComponent} from './view/dashboard/dashboard.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatSortModule} from "@angular/material/sort";
 import { MaterialComponent } from './view/modules/material/material.component';
-import { InventoryComponent } from './view/inventory/inventory.component';
-import { AdminComponent } from './view/admin/admin.component';
 import {EmployeeComponent} from "./view/modules/employee/employee.component";
 import { ProductComponent } from './view/modules/product/product.component';
 import { SupplierComponent } from './view/modules/supplier/supplier.component';
@@ -62,8 +60,6 @@ import { CustomerComponent } from './view/modules/customer/customer.component';
     OperationComponent,
     DashboardComponent,
     MaterialComponent,
-    InventoryComponent,
-    AdminComponent,
     EmployeeComponent,
     ProductComponent,
     SupplierComponent,
