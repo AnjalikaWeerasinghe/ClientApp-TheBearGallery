@@ -34,7 +34,7 @@ export class AuthorizationManager {
 
   salMenuItems = [
     {name: 'Customers', accessFlag: true, routerLink: 'customer'},
-    {name: 'Sales Orders', accessFlag: true, routerLink: 'saleorder'}
+    {name: 'Sales Orders', accessFlag: true, routerLink: 'salesorder'}
   ];
 
   constructor(private am: AuthoritySevice) {}
