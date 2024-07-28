@@ -20,7 +20,8 @@ import {AuthorizationManager} from "../../../service/authorizationmanager";
 import {ConfirmComponent} from "../../../util/dialog/confirm/confirm.component";
 import {MessageComponent} from "../../../util/dialog/message/message.component";
 import {from, last} from "rxjs";
-import {Material} from "../../../entity/material";
+import {Countryservice} from "../../../service/countryservice";
+import {Country} from "../../../entity/country";
 
 @Component({
   selector: 'app-employee',
@@ -60,6 +61,7 @@ export class EmployeeComponent {
   designations: Array<Designation> = [];
   employeestatuses: Array<Employeestatus> = [];
   employeetypes: Array<Employeetype> = [];
+  countries: Array<Country> = [];
 
   regexes: any;
 
@@ -73,6 +75,7 @@ export class EmployeeComponent {
       private ds: DesignationService,
       private ss: Employeestatusservice,
       private et: Employeetypeservice,
+      private cn: Countryservice,
       private rs: RegexService,
       private fb: FormBuilder,
       private dg: MatDialog,
@@ -83,7 +86,7 @@ export class EmployeeComponent {
     this.uiassist = new UiAssist(this);
 
     this.csearch = this.fb.group({
-      "csnumber": new FormControl(),
+      "csregid": new FormControl(),
       "cscallingname": new FormControl(),
       "csgender": new FormControl(),
       "csdesignation": new FormControl(),
@@ -92,7 +95,7 @@ export class EmployeeComponent {
     });
 
     this.ssearch = this.fb.group({
-      "ssnumber": new FormControl(),
+      "ssregid": new FormControl(),
       "ssfullname": new FormControl(),
       "ssgender": new FormControl(),
       "ssdesignation": new FormControl(),
@@ -101,7 +104,7 @@ export class EmployeeComponent {
 
 
     this.form = this.fb.group({
-      "number": new FormControl('', [Validators.required]),
+      "regid": new FormControl('', [Validators.required]),
       "fullname": new FormControl('', [Validators.required]),
       "callingname": new FormControl('', [Validators.required]),
       "gender": new FormControl('', [Validators.required]),
@@ -109,11 +112,12 @@ export class EmployeeComponent {
       "dobirth": new FormControl('', [Validators.required]),
       "photo": new FormControl('', [Validators.required]),
       "address": new FormControl('', [Validators.required]),
-      "mobile": new FormControl('', [Validators.required]),
-      "land": new FormControl('', ),
+      "contactmobile": new FormControl('', [Validators.required]),
+      "contactland": new FormControl('', ),
       "email": new FormControl('', [Validators.required]),
       "designation": new FormControl('', [Validators.required]),
-      "doassignment": new FormControl('', [Validators.required]),
+      "country": new FormControl('', [Validators.required]),
+      "doregistered": new FormControl('', [Validators.required]),
       "description": new FormControl('', [Validators.required]),
       "emptype": new FormControl('', [Validators.required]),
       "empstatus": new FormControl('', [Validators.required]),
@@ -124,6 +128,7 @@ export class EmployeeComponent {
 
   ngOnInit() {
     this.initialize();
+    this.getLastRegID();
   }
 
   initialize() {
@@ -142,8 +147,12 @@ export class EmployeeComponent {
       this.employeestatuses = stes;
     });
 
-    this.et.getAllList().then((typs: Employeetype[]) => {
-      this.employeetypes = typs;
+    this.et.getAllList().then((ets: Employeetype[]) => {
+      this.employeetypes = ets;
+    });
+
+    this.cn.getAllList().then((cns: Country[]) => {
+      this.countries = cns;
     });
 
     this.rs.get('employee').then((regs: []) => {
@@ -161,7 +170,7 @@ export class EmployeeComponent {
 
   createForm() {
 
-    this.form.controls['number'].setValidators([Validators.required, Validators.pattern(this.regexes['number']['regex'])]);
+    this.form.controls['regid'].setValidators([Validators.required, Validators.pattern(this.regexes['regid']['regex'])]);
     this.form.controls['fullname'].setValidators([Validators.required, Validators.pattern(this.regexes['fullname']['regex'])]);
     this.form.controls['callingname'].setValidators([Validators.required, Validators.pattern(this.regexes['callingname']['regex'])]);
     this.form.controls['gender'].setValidators([Validators.required]);
@@ -169,11 +178,12 @@ export class EmployeeComponent {
     this.form.controls['dobirth'].setValidators([Validators.required]);
     this.form.controls['photo'].setValidators([Validators.required]);
     this.form.controls['address'].setValidators([Validators.required, Validators.pattern(this.regexes['address']['regex'])]);
-    this.form.controls['mobile'].setValidators([Validators.required, Validators.pattern(this.regexes['mobile']['regex'])]);
-    this.form.controls['land'].setValidators([Validators.pattern(this.regexes['land']['regex'])]);
+    this.form.controls['contactmobile'].setValidators([Validators.required, Validators.pattern(this.regexes['contactmobile']['regex'])]);
+    this.form.controls['contactland'].setValidators([Validators.pattern(this.regexes['contactland']['regex'])]);
     this.form.controls['email'].setValidators([Validators.required,Validators.pattern(this.regexes['email']['regex'])]);
     this.form.controls['designation'].setValidators([Validators.required]);
-    this.form.controls['doassignment'].setValidators([Validators.required]);
+    this.form.controls['country'].setValidators([Validators.required]);
+    this.form.controls['doregistered'].setValidators([Validators.required]);
     this.form.controls['description'].setValidators([Validators.required, Validators.pattern(this.regexes['description']['regex'])]);
     this.form.controls['emptype'].setValidators([Validators.required]);
     this.form.controls['empstatus'].setValidators([Validators.required]);
@@ -184,7 +194,7 @@ export class EmployeeComponent {
       const control = this.form.controls[controlName];
       control.valueChanges.subscribe(value => {
             // @ts-ignore
-            if (controlName == "dobirth" || controlName == "doassignment")
+            if (controlName == "dobirth" || controlName == "doregistered")
               value = this.dp.transform(new Date(value), 'yyyy-MM-dd');
 
             if (this.oldemployee != undefined && control.valid) {
@@ -243,7 +253,7 @@ export class EmployeeComponent {
     const cserchdata = this.csearch.getRawValue();
 
     this.data.filterPredicate = (employee: Employee, filter: string) => {
-      return (cserchdata.csnumber == null || employee.id.toString().includes(cserchdata.csnumber)) &&
+      return (cserchdata.csregid == null || employee.id.toString().includes(cserchdata.csregid)) &&
           (cserchdata.cscallingname == null || employee.callingname.toLowerCase().includes(cserchdata.cscallingname)) &&
           (cserchdata.csgender == null || employee.gender.name.toLowerCase().includes(cserchdata.csgender)) &&
           (cserchdata.csdesignation == null || employee.designation.name.toLowerCase().includes(cserchdata.csdesignation)) &&
@@ -259,7 +269,7 @@ export class EmployeeComponent {
 
     const sserchdata = this.ssearch.getRawValue();
 
-    let number = sserchdata.ssnumber;
+    let regid = sserchdata.ssregid;
     let fullname = sserchdata.ssfullname;
     let nic = sserchdata.ssnic;
     let genderid = sserchdata.ssgender;
@@ -267,7 +277,7 @@ export class EmployeeComponent {
 
     let query = "";
 
-    if (number != null && number.trim() != "") query = query + "&number=" + number;
+    if (regid != null && regid.trim() != "") query = query + "&regid=" + regid;
     if (fullname != null && fullname.trim() != "") query = query + "&fullname=" + fullname;
     if (nic != null && nic.trim() != "") query = query + "&nic=" + nic;
     if (genderid != null) query = query + "&genderid=" + genderid;
@@ -451,7 +461,7 @@ export class EmployeeComponent {
     //@ts-ignore
     this.employee.empstatus = this.employeestatuses.find(s => s.id === this.employee.empstatus.id);
     //@ts-ignore
-    this.employee.emptype = this.employeetypes.find(s => s.id === this.employee.emptype.id);
+    this.employee.emptype = this.employeetypes.find(t => t.id === this.employee.emptype.id);
 
     this.form.patchValue(this.employee);
     this.form.markAsPristine();

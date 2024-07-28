@@ -29,13 +29,13 @@ import {from, last} from "rxjs";
 })
 export class MaterialComponent {
 
-  columns: string[] = ['id','name','itemcode','photo','quantity','purchasedate','unitprice','rop','description','modi'];
-  headers: string[] = ['ID','Name','Item Code','Photo','Quantity','Purchase Date','Unit Price ($)','ROP','Description','Modification'];
-  binders: string[] = ['id','name','itemcode','photo','quantity','purchasedate','unitprice','rop','description','getModi()'];
+  columns: string[] = ['id','name','itemcode','quantity','purchasedate','unitprice','rop','description','modi'];
+  headers: string[] = ['ID','Name','Item Code','Quantity','Purchase Date','Unit Price ($)','ROP','Description','Modification'];
+  binders: string[] = ['id','name','itemcode','quantity','purchasedate','unitprice','rop','description','getModi()'];
 
-  cscolumns: string[] = ['csid','csname','csitemcode','csphoto','csquantity','cspdate','csunitprice','csrop','csdescription','csmodi'];
-  csprompts: string[] = ['Search by ID','Search by Name','Search by Item Code','Search by Photo','Search by Quantity',
-    'Search  by Purchase Date', 'Search by Unit Price', 'Search by ROP','Search by Description','Search by Modification'];
+  cscolumns: string[] = ['csid','csname','csitemcode','csquantity','cspdate','csunitprice','csrop','csdescription','csmodi'];
+  csprompts: string[] = ['Search by ID','Search by Name','Search by Item Code','Search by Quantity', 'Search  by Purchase Date',
+    'Search by Unit Price', 'Search by ROP','Search by Description','Search by Modification'];
 
   material!:Material;
   oldMaterial!:Material;
@@ -63,9 +63,9 @@ export class MaterialComponent {
   lastitemcode!:string;
   selectedrow:any;
 
-  enaadd: boolean = false;
-  enaupd: boolean = false;
-  enadel: boolean = false;
+  enaadd: boolean = true;
+  enaupd: boolean = true;
+  enadel: boolean = true;
 
   constructor(
     private fb:FormBuilder,
@@ -106,7 +106,7 @@ export class MaterialComponent {
       "category":new FormControl('',Validators.required),
       "subcategory":new FormControl('',Validators.required),
       "brand":new FormControl('',Validators.required),
-      "warehouse":new FormControl('',Validators.required),
+      // "warehouse":new FormControl('',Validators.required),
       "name":new FormControl('',Validators.required),
       "itemcode":new FormControl('',Validators.required),
       "photo":new FormControl('',Validators.required),
@@ -165,7 +165,7 @@ export class MaterialComponent {
     this.form.controls['category'].setValidators([Validators.required]);
     this.form.controls['subcategory'].setValidators([Validators.required]);
     this.form.controls['brand'].setValidators([Validators.required]);
-    this.form.controls['warehouse'].setValidators([Validators.required]);
+    // this.form.controls['warehouse'].setValidators([Validators.required]);
     this.form.controls['name'].setValidators([Validators.required, Validators.pattern(this.regexes['name']['regex'])]);
     this.form.controls['itemcode'].setValidators([Validators.required, Validators.pattern(this.regexes['itemcode']['regex'])]);
     this.form.controls['photo'].setValidators([Validators.required]);
@@ -174,7 +174,7 @@ export class MaterialComponent {
     this.form.controls['rop'].setValidators([Validators.required, Validators.pattern(this.regexes['rop']['regex'])]);
     this.form.controls['description'].setValidators([Validators.required, Validators.pattern(this.regexes['description']['regex'])]);
     this.form.controls['materialtype'].setValidators([Validators.required]);
-    this.form.controls['materialstatus'].setValidators([Validators.required]);
+    // this.form.controls['materialstatus'].setValidators([Validators.required]);
     this.form.controls['purchasedate'].setValidators([Validators.required]);
 
     Object.values(this.form.controls).forEach(control => {
@@ -238,7 +238,7 @@ export class MaterialComponent {
       return (cssearchdata.csid == null || material.id.toString().includes(cssearchdata.csid)) &&
         (cssearchdata.csname == null || material.name.includes(cssearchdata.csname)) &&
         (cssearchdata.csitemcode == null || material.itemcode.includes(cssearchdata.csitemcode)) &&
-        (cssearchdata.csphoto == null || material.photo.includes(cssearchdata.csphoto)) &&
+        // (cssearchdata.csphoto == null || material.photo.includes(cssearchdata.csphoto)) &&
         (cssearchdata.csquantity == null || material.quantity.toString().includes(cssearchdata.csquantity)) &&
         (cssearchdata.cspdate == null || material.purchasedate.toString().includes(cssearchdata.cspdate)) &&
         (cssearchdata.csunitprice == null || material.unitprice.toString().includes(cssearchdata.csunitprice)) &&
@@ -344,7 +344,7 @@ export class MaterialComponent {
         if (this.regexes[controlName] != undefined){
           errors = errors+ "<br>"+ this.regexes[controlName]['message'];
         } else {
-          errors = errors+ "<br>Invalid!"+controlName;
+          errors = errors+ "<br>Invalid "+controlName;
         }
       }
     }

@@ -19,7 +19,7 @@ export class AuthorizationManager {
     { name: 'Employee', accessFlag: true, routerLink: 'employee' },
     { name: 'User', accessFlag: true, routerLink: 'user' },
     { name: 'Privilege', accessFlag: true, routerLink: 'privilege' },
-    { name: 'Operations', accessFlag: true, routerLink: 'operation' }
+    { name: 'Operations', accessFlag: true, routerLink: 'operations' }
   ];
 
   invMenuItems = [
@@ -33,8 +33,8 @@ export class AuthorizationManager {
   ];
 
   salMenuItems = [
-    {name: 'Customers', accessFlag: true, routerLink: 'customer'},
-    {name: 'Sales Orders', accessFlag: true, routerLink: 'salesorder'}
+    {name: 'Customer', accessFlag: true, routerLink: 'customer'},
+    {name: 'Sales Order', accessFlag: true, routerLink: 'salesorder'}
   ];
 
   constructor(private am: AuthoritySevice) {}

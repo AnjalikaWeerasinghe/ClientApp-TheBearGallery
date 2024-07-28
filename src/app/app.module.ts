@@ -49,6 +49,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import { PurchaseorderComponent } from './view/modules/purchaseorder/purchaseorder.component';
 import { SalesorderComponent } from './view/modules/salesorder/salesorder.component';
 import { DailyproductionComponent } from './view/dailyproduction/dailyproduction.component';
+import { CountbydesignationComponent } from './report/view/countbydesignation/countbydesignation.component';
+import { MaterialcountbycategoryComponent } from './report/view/materialcountbycategory/materialcountbycategory.component';
 
 
 @NgModule({
@@ -71,6 +73,8 @@ import { DailyproductionComponent } from './view/dailyproduction/dailyproduction
     PurchaseorderComponent,
     SalesorderComponent,
     DailyproductionComponent,
+    CountbydesignationComponent,
+    MaterialcountbycategoryComponent,
   ],
   imports: [
     MatDatepickerModule,

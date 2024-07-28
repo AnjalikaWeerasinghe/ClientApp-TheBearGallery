@@ -15,6 +15,10 @@ import {CustomerComponent} from "./view/modules/customer/customer.component";
 import {PurchaseorderComponent} from "./view/modules/purchaseorder/purchaseorder.component";
 import {SalesorderComponent} from "./view/modules/salesorder/salesorder.component";
 import {DailyproductionComponent} from "./view/dailyproduction/dailyproduction.component";
+import {CountbydesignationComponent} from "./report/view/countbydesignation/countbydesignation.component";
+import {
+  MaterialcountbycategoryComponent
+} from "./report/view/materialcountbycategory/materialcountbycategory.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -26,6 +30,8 @@ const routes: Routes = [
       {path: "home", component: HomeComponent},
       {path: "dashboard", component: DashboardComponent},
       {path: "home/dashboard", redirectTo: 'dashboard', pathMatch: 'full'},
+      {path: "home/reports", redirectTo: 'report', pathMatch: 'full'},
+      {path: "report", component: CountbydesignationComponent},
       {path: "dailyproduction", component: DailyproductionComponent},
       {path: "home/dailyproduction", redirectTo: 'dailyproduction', pathMatch: 'full'},
       {path: "employee", component: EmployeeComponent},
@@ -33,7 +39,7 @@ const routes: Routes = [
       {path: "user", component: UserComponent},
       {path:"privilege", component: PrivilegeComponent},
       {path: "home/privilege", redirectTo: 'privilege', pathMatch: 'full'},
-      {path:"operations",component:OperationComponent},
+      {path:"operation",component:OperationComponent},
       {path:"material",component:MaterialComponent},
       {path: "home/material", redirectTo: 'material', pathMatch: 'full'},
       {path:"product",component:ProductComponent},
@@ -44,6 +50,10 @@ const routes: Routes = [
       {path:"customer",component:CustomerComponent},
       {path: "home/customer", redirectTo: 'customer', pathMatch: 'full'},
       {path:"salesorder",component:SalesorderComponent},
+      {path: "home/countbydesignation", redirectTo: 'countbydesignation', pathMatch: 'full'},
+      {path:"countbydesignation",component:CountbydesignationComponent},
+      {path: "home/materialcountbycategory", redirectTo: 'materialcountbycategory', pathMatch: 'full'},
+      {path:"materialcountbycategory",component:MaterialcountbycategoryComponent},
     ]
     //{ path: '**', redirectTo: 'login', pathMatch: 'full' } // Redirect any other route to login
   }];

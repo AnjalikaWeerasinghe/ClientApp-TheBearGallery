@@ -17,8 +17,9 @@ mat-card-header { background: lightskyblue; }
 
 
 /* Employee Form */
-#materialform {
-    padding-top: 20px;
+#employeeform {
+    padding-top: 10px;
+  margin-top: 10px ;
 }
 
 
@@ -84,4 +85,8 @@ button:disabled {
 #materialform mat-form-field .ng-valid,
 .ng-valid.required {
     background-color: transparent;
+}
+
+#employeeform mat-form-field{
+  margin-bottom: 20px;
 }

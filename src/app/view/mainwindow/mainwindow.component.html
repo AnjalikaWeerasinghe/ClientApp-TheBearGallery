@@ -24,6 +24,10 @@
         <a routerLink="dashboard"><mat-icon>widgets</mat-icon>Dashboard</a>
       </mat-list-item>
 
+      <mat-list-item>
+        <a routerLink="dailyproduction"><mat-icon>factory</mat-icon>Daily Production</a>
+      </mat-list-item>
+
       <mat-expansion-panel *ngIf="isMenuVisible('Admin')">
         <mat-expansion-panel-header>
           <mat-list-item><a>
@@ -64,25 +68,23 @@
       </mat-expansion-panel>
 
       <mat-expansion-panel *ngIf="isMenuVisible('Sales')">
-        <mat-expansion-panel-header>
-          <mat-list-item><a>
-            <mat-icon>shopping_cart</mat-icon>
-            Sales</a></mat-list-item>
-        </mat-expansion-panel-header>
-        <ng-container *ngFor="let menuItem of salMenuItems">
-          <mat-list-item *ngIf="menuItem.accessFlag">
-            <mat-list-item class="item" [routerLink]="menuItem.accessFlag ? menuItem.routerLink : null"><a>{{ menuItem.name }}</a></mat-list-item>
-          </mat-list-item>
-        </ng-container>
+      <mat-expansion-panel-header>
+        <mat-list-item><a>
+          <mat-icon>shopping_cart</mat-icon>
+          Sales</a></mat-list-item>
+      </mat-expansion-panel-header>
+      <ng-container *ngFor="let menuItem of salMenuItems">
+        <mat-list-item *ngIf="menuItem.accessFlag">
+          <mat-list-item class="item" [routerLink]="menuItem.accessFlag ? menuItem.routerLink : null"><a>{{ menuItem.name }}</a></mat-list-item>
+        </mat-list-item>
+      </ng-container>
       </mat-expansion-panel>
 
-      <mat-list-item>
-        <a routerLink="dailyproduction"><mat-icon>factory</mat-icon>Daily Production</a>
-      </mat-list-item>
-
-      <mat-list-item>
-        <a routerLink="report"><mat-icon>poll</mat-icon>Report</a>
-      </mat-list-item>
+      <mat-expansion-panel class="change">
+        <mat-expansion-panel-header>
+          <mat-list-item><mat-icon>poll</mat-icon>Reports</mat-list-item>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
 
     </mat-nav-list>
   </mat-sidenav>

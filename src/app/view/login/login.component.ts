@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit{
           width: '500px',
           data: {
             heading: "Invalid Login Details",
-            message: "Username/Password Empty or Invalid. Check for Username Length"
+            message: "Username/Password Empty or Invalid. Please check again."
           }
         });
 

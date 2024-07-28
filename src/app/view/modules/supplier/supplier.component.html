@@ -1,1 +1,103 @@
-<p>supplier works!</p>
+<mat-grid-list [cols]="12" rowHeight="4rem">
+
+  <mat-grid-tile [colspan]="4" [rowspan]="10">
+
+    <mat-card>
+
+      <mat-card-header>
+        <mat-card-title>Supplier Form</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content id="supplierform">
+
+        <mat-form  [formGroup]="form" >
+
+          <mat-form-field appearance="outline">
+            <mat-label>Supplier ID</mat-label>
+            <input matInput placeholder="Enter your Employee ID" [value]="" formControlName="regid">
+<!--            <mat-hint *ngIf="">{{}}</mat-hint>-->
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Supplier Name</mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Contact Person</mat-label>
+            <input matInput formControlName="contactperson">
+          </mat-form-field>
+
+<!--          <div id="imgpanel">-->
+<!--            <img [src]="imageempurl">-->
+<!--            <input id="userImage" hidden="hidden" (change)="selectImage($event)" Select type="file" formControlName="photo">-->
+<!--            <label for="userImage" id="selectbutton">Select</label>-->
+<!--            <label id="clearbutton" (click)="clearImage()">Clear</label>-->
+<!--          </div>-->
+
+          <mat-form-field appearance="outline">
+            <mat-label>Mobile Number</mat-label>
+            <input matInput formControlName="contactmobile">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Land-Phone Number</mat-label>
+            <input matInput formControlName="contactland">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Date of Registered</mat-label>
+            <input matInput [matDatepicker]="regdate" formControlName="doregistered">
+            <mat-datepicker-toggle matIconSuffix [for]="regdate"></mat-datepicker-toggle>
+            <mat-datepicker #regdate></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Country of the Supplier</mat-label>
+            <mat-select formControlName="supcountry">
+              <mat-option [value]="null" selected>Not Selected</mat-option>
+              <mat-option *ngFor="let supcountry of supcountries" [value]="supcountry">{{supcountry.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Select Supplier Type</mat-label>
+            <mat-select formControlName="suppliertype">
+              <mat-option [value]="null" selected>Not Selected</mat-option>
+              <mat-option *ngFor="let suppliertype of suppliertypes" [value]="suppliertype">{{suppliertype.type}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Supplier Status</mat-label>
+            <mat-select formControlName="supplierstatus">
+              <mat-option [value]="null" selected>Not Selected</mat-option>
+              <mat-option *ngFor="let supplierstatus of supplierstatuses" [value]="supplierstatus">{{supplierstatus.status}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </mat-form>
+
+
+      </mat-card-content>
+
+    </mat-card>
+
+  </mat-grid-tile>
+
+</mat-grid-list>

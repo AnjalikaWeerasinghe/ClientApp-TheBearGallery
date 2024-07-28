@@ -11,17 +11,15 @@
         <mat-form  [formGroup]="form" >
 
           <mat-form-field appearance="outline">
-            <mat-label>Registration ID</mat-label>
-            <input matInput formControlName="regid">
-            <mat-hint>{{lastregid}}</mat-hint>
+            <mat-label>Employee ID</mat-label>
+            <input matInput placeholder="Enter your Employee ID" [value]="lastregid" formControlName="regid">
+            <mat-hint *ngIf="lastregid">{{lastregid}}</mat-hint>
           </mat-form-field>
-
 
           <mat-form-field appearance="outline">
             <mat-label>Full Name</mat-label>
             <input matInput formControlName="fullname">
           </mat-form-field>
-
 
           <mat-form-field appearance="outline">
             <mat-label>Calling Name</mat-label>
@@ -62,12 +60,12 @@
 
           <mat-form-field appearance="outline">
             <mat-label>Mobile</mat-label>
-            <input matInput formControlName="mobile">
+            <input matInput formControlName="contactmobile">
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>Land</mat-label>
-            <input matInput formControlName="land">
+            <input matInput formControlName="contactland">
           </mat-form-field>
 
           <mat-form-field appearance="outline">
@@ -84,8 +82,16 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline">
+            <mat-label>Country</mat-label>
+            <mat-select formControlName="country">
+              <mat-option [value]="null" selected>Not Selected</mat-option>
+              <mat-option *ngFor="let country of countries" [value]="country">{{country.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
             <mat-label>Assignment Date</mat-label>
-            <input matInput [matDatepicker]="assdate" formControlName="doassignment">
+            <input matInput [matDatepicker]="assdate" formControlName="doregistered">
             <mat-datepicker-toggle matIconSuffix [for]="assdate"></mat-datepicker-toggle>
             <mat-datepicker #assdate></mat-datepicker>
           </mat-form-field>

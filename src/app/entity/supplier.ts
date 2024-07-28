@@ -1,6 +1,7 @@
 import {Suppliertype} from "./suppliertype";
 import {Supplierstatus} from "./supplierstatus";
 import {Supcountry} from "./supcountry";
+import {Employee} from "./employee";
 
 export class Supplier {
 
@@ -17,12 +18,13 @@ export class Supplier {
   public description !: string;
   public suppliertype !: Suppliertype;
   public supplierstatus !: Supplierstatus;
-  public country !: Supcountry;
-
+  public supcountry !: Supcountry;
+  public employee !: Employee;
 
   constructor(id: number, name: string, regid: string, contactperson: string, photo: string, contactmobile: string,
               contactland: string, doregistered: string, address: string, email: string, description: string,
-              suppliertype: Suppliertype, supplierstatus: Supplierstatus, country: Supcountry) {
+              suppliertype: Suppliertype, supplierstatus: Supplierstatus, supcountry: Supcountry, employee: Employee) {
+
     this.id = id;
     this.name = name;
     this.regid = regid;
@@ -36,6 +38,8 @@ export class Supplier {
     this.description = description;
     this.suppliertype = suppliertype;
     this.supplierstatus = supplierstatus;
-    this.country = country;
+    this.supcountry = supcountry;
+    this.employee = employee;
+
   }
 }

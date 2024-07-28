@@ -1,4 +1,4 @@
-export class Supplierstatus {
+ export class Supplierstatus {
 
   public id !: number;
   public status !: string;

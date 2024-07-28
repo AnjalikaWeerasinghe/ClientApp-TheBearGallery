@@ -12,7 +12,7 @@ export class Employeetypeservice {
 
   async getAllList(): Promise<Array<Employeetype>> {
 
-    const employeetypes = await this.http.get<Array<Employeetype>>('http://localhost:8080/employeetypes/list').toPromise();
+    const employeetypes = await this.http.get<Array<Employeetype>>('http://localhost:8080/empolyeestypes/list').toPromise();
     if(employeetypes == undefined){
       return [];
     }

@@ -13,7 +13,7 @@
 }
 
 mat-toolbar{
-  background: linear-gradient(40deg, darkblue, cadetblue) ;
+  background: linear-gradient(40deg, cadetblue, darkblue) ;
   margin-left: 0;
   margin-bottom: 0px;
   position: inherit ;
@@ -58,6 +58,8 @@ mat-toolbar{
 
 /* Side Navigation */
 
+.change mat-expansion-panel-header{color: white}
+
 mat-toolbar a {
   font-size: 20px;
   text-decoration: none;
@@ -73,27 +75,31 @@ mat-toolbar mat-icon {
 }
 
 mat-expansion-panel .mat-expansion-panel-header{
-  background-color: darkblue;
+  background-color: cadetblue;
   margin: 0;
   padding: 0 16px;
 }
 
 mat-expansion-panel .mat-expansion-panel-header:hover{
-  background-color: cadetblue;
+  background-color: transparent;
   margin: 0;
   padding: 0 16px;
 }
 
 mat-expansion-panel .item{
-  background-color: darkblue;
+  background-color: transparent;
   width: 200px;
   padding: 0 16px;
 }
 
 mat-expansion-panel .item:hover{
-  background-color: cadetblue;
+  background-color: transparent;
   margin: 0;
   padding: 0 16px;
+}
+
+mat-expansion-panel mat-expansion-panel-header{
+  color: white;
 }
 
 mat-toolbar mat-expansion-panel-header:hover {
@@ -103,14 +109,14 @@ mat-toolbar mat-expansion-panel-header:hover {
 mat-sidenav {
   width: 200px;
   margin: 0;
-  background-color: darkblue;
-  color: white;
+  background-color: cadetblue;
+  color: black;
 }
 
 mat-sidenav-content {
-  margin-top: 30px; /* Adjust based on the height of your toolbar */
+  margin-top: 0px; /* Adjust based on the height of your toolbar */
   width: auto;
-  background-color: white;
+  background: linear-gradient(40deg, cadetblue, darkblue);
 }
 
 .btn-nav.mat-mdc-icon-button {
@@ -149,14 +155,14 @@ mat-sidenav a {
 
 
 mat-nav-list mat-list-item:hover {
-  background: cadetblue;
+  background: transparent;
 }
 
 
 mat-sidenav mat-nav-list mat-list-item a {
   font-size: 14px;
   text-decoration: none;
-  color: white;
+  color: black;
   font-family: "Times New Roman";
 }
 
