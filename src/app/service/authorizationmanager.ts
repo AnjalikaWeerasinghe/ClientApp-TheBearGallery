@@ -49,20 +49,24 @@ export class AuthorizationManager {
   }
 
   enableMenues(modules: { module: string; operation: string }[]): void {
-    this.admMenuItems.forEach(menuItem => {
-      menuItem.accessFlag = modules.some(module => module.module.toLowerCase() === menuItem.name.toLowerCase());
+    this.admMenuItems.forEach(item => {
+      item.accessFlag = modules.some(module => module.module.toLowerCase() === item.name.toLowerCase());
     });
 
-    this.invMenuItems.forEach(menuItem=> {
-      menuItem.accessFlag = modules.some(module => module.module.toLowerCase() === menuItem.name.toLowerCase());
+    this.invMenuItems.forEach(item=> {
+      // console.log("Checking item: ", item.name);
+      item.accessFlag = modules.some(module => module.module.toLowerCase() === item.name.toLowerCase());
+      // console.log("Access flag for ", item.name, ": ", item.accessFlag);
     });
 
-    this.purMenuItems.forEach(menuItem=> {
-      menuItem.accessFlag = modules.some(module => module.module.toLowerCase() === menuItem.name.toLowerCase());
+    this.purMenuItems.forEach(item=> {
+      // console.log("Checking item: ", item.name);
+      item.accessFlag = modules.some(module => module.module.toLowerCase() === item.name.toLowerCase());
+      // console.log("Access flag for ", item.name, ": ", item.accessFlag);
     });
 
-    this.salMenuItems.forEach(menuItem=> {
-      menuItem.accessFlag = modules.some(module => module.module.toLowerCase() === menuItem.name.toLowerCase());
+    this.salMenuItems.forEach(item=> {
+      item.accessFlag = modules.some(module => module.module.toLowerCase() === item.name.toLowerCase());
     });
 
     // Save menu state in localStorage
@@ -84,7 +88,7 @@ export class AuthorizationManager {
           const [module, operation] = authority.split('-');
           return { module, operation };
         });
-        console.log(authorities);
+        // console.log(authorities);
 
         this.enableButtons(authorities);
         this.enableMenues(authorities);
@@ -165,8 +169,8 @@ export class AuthorizationManager {
     localStorage.removeItem(this.localStorageSalMenus);
   }
 
-  isMenuItemDisabled(menuItem: { accessFlag: boolean }): boolean {
-    return !menuItem.accessFlag;
+  isMenuItemDisabled(item: { accessFlag: boolean }): boolean {
+    return !item.accessFlag;
   }
 
 }

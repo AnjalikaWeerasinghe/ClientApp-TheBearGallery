@@ -29,7 +29,7 @@
 
           <div id="butpanel">
             <button mat-raised-button (click)="add()" [disabled]="!authService.getEnaAdd()">Add</button>
-            <button mat-raised-button>Clear</button>
+            <button mat-raised-button (click)="clear()">Clear</button>
             <button mat-raised-button (click)="update()" [disabled]="!authService.getEnaUpd()">Update</button>
             <button mat-raised-button (click)="delete()" [disabled]="!authService.getEnaDel()">Delete</button>
           </div>
@@ -54,10 +54,10 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline">
-            <mat-label>Operation</mat-label>
-            <mat-select formControlName="ssoperation">
+            <mat-label>Operation Type</mat-label>
+            <mat-select formControlName="ssopetype">
               <mat-option [value]="null" selected>Not Selected</mat-option>
-              <mat-option *ngFor="let operation of operations" [value]="operation.id">{{operation.name}}</mat-option>
+              <mat-option *ngFor="let opetype of opetypes" [value]="opetype.id">{{opetype.name}}</mat-option>
             </mat-select>
           </mat-form-field>
 

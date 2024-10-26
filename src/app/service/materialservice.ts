@@ -1,6 +1,7 @@
 import {HttpClient} from "@angular/common/http";
 import {Material} from "../entity/material";
 import {Injectable} from "@angular/core";
+import {Supplierstatus} from "../entity/supplierstatus";
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,15 @@ export class Materialservice{
   }
 
   async getAllListNameId(): Promise<Array<Material>> {
+
+    const materials = await this.http.get<Array<Material>>('http://localhost:8080/materials/list').toPromise();
+    if(materials == undefined){
+      return [];
+    }
+    return materials;
+  }
+
+  async getAllList(): Promise<Array<Material>> {
 
     const materials = await this.http.get<Array<Material>>('http://localhost:8080/materials/list').toPromise();
     if(materials == undefined){

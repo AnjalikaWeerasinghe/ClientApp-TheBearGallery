@@ -35,7 +35,7 @@ mat-table{overflow: auto;}
 }
 
 #privilageform mat-form-field .ng-dirty{
-  background-color: gold;
+  background-color: transparent;
 }
 
 

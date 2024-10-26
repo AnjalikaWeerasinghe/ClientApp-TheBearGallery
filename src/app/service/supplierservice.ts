@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Supplier} from "../entity/supplier";
+import {Material} from "../entity/material";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class Supplierservice {
   }
 
   async update(supplier: Supplier): Promise<[]|undefined>{
-    //console.log("Employee Updating-"+customer.id);
+    console.log("Supplier Updating-"+supplier.id);
     return this.http.put<[]>('http://localhost:8080/suppliers', supplier).toPromise();
   }
 
@@ -30,6 +31,15 @@ export class Supplierservice {
   }
 
   async getAllListNameId(): Promise<Array<Supplier>> {
+
+    const suppliers = await this.http.get<Array<Supplier>>('http://localhost:8080/suppliers/list').toPromise();
+    if(suppliers == undefined){
+      return [];
+    }
+    return suppliers;
+  }
+
+  async getAllList(): Promise<Array<Supplier>> {
 
     const suppliers = await this.http.get<Array<Supplier>>('http://localhost:8080/suppliers/list').toPromise();
     if(suppliers == undefined){

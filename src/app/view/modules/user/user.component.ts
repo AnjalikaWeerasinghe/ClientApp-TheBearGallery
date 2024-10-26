@@ -202,7 +202,7 @@ export class UserComponent implements OnInit{
     this.form.controls['confirmpassword'].setValidators([Validators.required, Validators.pattern(this.regexes['password']['regex'])]);
     this.form.controls['docreated'].setValidators([Validators.required]);
     this.form.controls['tocreated'].setValidators([Validators.required]);
-    this.form.controls['userstatus'].setValidators([Validators.required]);
+    this.form.controls['userstatus'].clearValidators();
     this.form.controls['usertype'].setValidators([Validators.required]);
     this.form.controls['description'].setValidators([Validators.required, Validators.pattern(this.regexes['description']['regex'])]);
     this.form.controls['userroles'].setValidators([Validators.required]);
@@ -336,7 +336,7 @@ export class UserComponent implements OnInit{
 
     const confirm = this.dg.open(ConfirmComponent, {
       width: '500px',
-      data: {heading: "Search Clear", message: "Are you sure to Clear the Search?"}
+      data: {heading: "Search Clear", message: "Are you sure to clear the search?"}
     });
 
     confirm.afterClosed().subscribe(async result => {
@@ -408,7 +408,7 @@ export class UserComponent implements OnInit{
         width: '500px',
         data: {
           heading: "Confirmation - User Add",
-          message: "Are you sure to Add the folowing User? <br> <br>" + userdata
+          message: "Are you sure to add the folowing user? <br> <br>" + userdata
         }
       });
 
@@ -450,7 +450,7 @@ export class UserComponent implements OnInit{
 
             const stsmsg = this.dg.open(MessageComponent, {
               width: '500px',
-              data: {heading: "Status -User Add", message: addmessage}
+              data: {heading: "Status - User Add", message: addmessage}
             });
 
             stsmsg.afterClosed().subscribe(async result => {

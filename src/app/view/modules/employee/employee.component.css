@@ -12,7 +12,7 @@ mat-card-header { background: lightskyblue; }
 
 #ssearch mat-form-field { padding-left: 15px; width: 200px; }
 
-#ssearch button{ width: 195px; margin-left:10px; margin-top: 5px; background-color: lightblue;   }
+#ssearch button{ width: 195px; margin-left:10px; margin-top: 5px; background-color: lightblue; color: black;  }
 
 
 
@@ -73,7 +73,7 @@ mat-card-header { background: lightskyblue; }
     background-color: inherit!important;
 }
 
-#materialform mat-form-field .ng-dirty{
+#employeeform mat-form-field .ng-dirty{
     background-color: cadetblue;
 }
 
@@ -82,7 +82,7 @@ button:disabled {
     opacity: 0.5;
 }
 
-#materialform mat-form-field .ng-valid,
+#employeeform mat-form-field .ng-valid,
 .ng-valid.required {
     background-color: transparent;
 }

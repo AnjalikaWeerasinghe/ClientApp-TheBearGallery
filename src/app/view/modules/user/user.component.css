@@ -23,18 +23,18 @@ mat-card-header { background: lightskyblue; }
 
 #pnlmiddle button{ margin: 8px; display: block!important;}
 
-.list{ border: solid gray; border-radius: 5px; max-height: 160px; width: 180px;margin-top: 10px; overflow: auto}
+.list{ border: solid rgb(128, 128, 128); border-radius: 5px; max-height: 160px; width: 180px;margin-top: 10px; overflow: auto}
 
 .list mat-list-option{ height: 27px;}
 
 .list .mat-mdc-list-item .mdc-list-item__primary-text{ font-size: 14px!important;}
 
-.selected-row{ background-color: lightblue!important; }
+.selected-row{ background-color: transparent!important; }
 
 .mat-row:hover { background-color: inherit!important; }
 
 #userform mat-form-field .ng-dirty{
-  background-color: gold;
+  background-color: transparent;
 }
 
 

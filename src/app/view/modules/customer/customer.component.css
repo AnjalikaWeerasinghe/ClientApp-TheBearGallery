@@ -1,0 +1,64 @@
+mat-card {  width: 100%;  height:100%;  margin: 10px 10px -10px 10px ; }
+
+mat-card-content { overflow: auto; height: 100%; }
+
+mat-card-header { background: lightskyblue; }
+
+#loading img{ width: 30px; height: 25px; margin-left: 200px; }
+
+#search mat-form{   padding-top: 30px; }
+
+#search mat-form-field { padding-left: 15px; width: 200px; padding-top: 7px; }
+
+#btnsearch, #btnclearsearch{ width: 195px; margin-left:10px; margin-top: 5px; background-color: lightblue; color: black; }
+
+#customerform {
+  padding-top: 10px;
+  margin-top: 10px ;
+}
+
+#imgpanel {
+  height: 100px;
+  margin-bottom: 30px;
+}
+
+#imgpanel img{
+  height: 100px;
+  width: 100px;
+}
+
+#selectbutton, #clearbutton{
+  width: 150px;
+  display: block;
+  margin-left: 150px;
+  margin-bottom: 5px;
+  background-color: lightblue;
+  color: black;
+  padding: 8px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#selectbutton{
+  margin-top: -100px;
+}
+
+#selectbutton, #clearbutton{
+  width: 150px;
+  display: block;
+  margin-left: 150px;
+  margin-bottom: 5px;
+  background-color: lightblue;
+  color: black;
+  padding: 8px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#butpanel button{
+  width: 82px;
+  margin:3px;
+  background-color: lightblue;
+  color: black;
+  font-weight: normal;
+}

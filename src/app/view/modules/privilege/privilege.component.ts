@@ -502,4 +502,20 @@ export class PrivilegeComponent {
     });
   }
 
+  clear():void{
+    const confirm = this.dg.open(ConfirmComponent, {
+      width: '500px',
+      data: {
+        heading: "Confirmation - Clear Privilege",
+        message: "Are you sure to clear following details ? <br> <br>"
+      }
+    });
+
+    confirm.afterClosed().subscribe(async result => {
+      if (result) {
+        this.form.reset()
+      }
+    });
+  }
+
 }

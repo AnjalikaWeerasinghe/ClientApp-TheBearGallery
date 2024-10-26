@@ -29,7 +29,7 @@ import {from, last} from "rxjs";
 })
 export class MaterialComponent {
 
-  columns: string[] = ['id','name','itemcode','quantity','purchasedate','unitprice','rop','description','modi'];
+  columns: string[] = ['name','itemcode','quantity','purchasedate','unitprice','rop','description','modi'];
   headers: string[] = ['ID','Name','Item Code','Quantity','Purchase Date','Unit Price ($)','ROP','Description','Modification'];
   binders: string[] = ['id','name','itemcode','quantity','purchasedate','unitprice','rop','description','getModi()'];
 
@@ -55,6 +55,8 @@ export class MaterialComponent {
   subcategories:Array<Subcategory> = [];
   brands:Array<Brand> = [];
   materialtypes:Array<Materialtype> = [];
+
+  filteredSubcategories: Array<Subcategory> = [];
 
   uiassist: UiAssist;
 
@@ -123,6 +125,17 @@ export class MaterialComponent {
 
   ngOnInit(){
     this.initialize();
+
+    this.form.get('category')?.valueChanges.subscribe(selectedCategoryId => {
+      // @ts-ignore
+      this.filteredSubcategories(selectedCategoryId);
+    })
+  }
+
+  filterSubcategories(categoryId: number) {
+    // @ts-ignore
+    this.filteredSubcategories = this.subcategories.filter(sub => sub.categoryId === categoryId);
+    this.form.get('subcategory')?.setValue(''); // Reset subcategory selection
   }
 
   initialize(){
@@ -461,6 +474,18 @@ export class MaterialComponent {
     //@ts-ignore
     this.material.subcategory.category = this.categories.find((c) => c.id === this.material.subcategory.category.id);
     this.form.controls['category'].setValue(this.material.subcategory.category);
+
+    //@ts-ignore
+    this.material.subcategory = this.subcategories.find(g => g.id === this.material.subcategory.id);
+    //@ts-ignore
+    this.material.brand = this.brands.find(d => d.id === this.material.brand.id);
+    //@ts-ignore
+    this.material.materialtype = this.materialtypes.find(s => s.id === this.material.materialtype.id);
+    //@ts-ignore
+    this.material.materialstatus = this.materialstatuses.find(s => s.id === this.material.materialstatus.id);
+
+    this.form.patchValue(this.material);
+    this.form.markAsPristine();
 
   }
 

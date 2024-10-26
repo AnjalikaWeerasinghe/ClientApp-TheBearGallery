@@ -13,7 +13,6 @@ export class MainwindowComponent {
 
   opened: boolean = true;
 
-
   constructor(private router: Router,public authService: AuthorizationManager,public darkModeSevice:DarkModeService) {
   }
 
@@ -33,16 +32,22 @@ export class MainwindowComponent {
   isMenuVisible(category: string): boolean {
     switch (category) {
       case 'Admin':
-        return this.admMenuItems.some(menuItem => menuItem.accessFlag);
+        // console.log(this.admMenuItems);
+        return this.admMenuItems.some(item => item.accessFlag);
       case 'Inventory':
-        return this.invMenuItems.some(menuItem => menuItem.accessFlag);
+        // console.log(this.invMenuItems);
+        return this.invMenuItems.some(item => item.accessFlag);
       case 'Purchases':
-        return this.purMenuItems.some(menuItem => menuItem.accessFlag);
+        // console.log(this.purMenuItems);
+        return this.purMenuItems.some(item => item.accessFlag);
       case 'Sales':
-        return this.salMenuItems.some(menuItem => menuItem.accessFlag);
+        // console.log(this.salMenuItems);
+        return this.salMenuItems.some(item => item.accessFlag);
       default:
         return false;
     }
   }
+
+
 
 }

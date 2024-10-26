@@ -72,7 +72,7 @@ export class OperationComponent {
 
     this.ssearch = this.fb.group({
       "ssmodule":new FormControl(),
-      "ssoperation":new FormControl(),
+      "ssopetype":new FormControl(),
     });
 
   }
@@ -176,15 +176,13 @@ export class OperationComponent {
 
     const sserchdata = this.ssearch.getRawValue();
 
-    let roleid = sserchdata.ssrole;
     let moduleid = sserchdata.ssmodule;
-    let operationid = sserchdata.ssoperation;
+    let opetypeid = sserchdata.ssopetype;
 
     let query = "";
 
-    if (roleid != null) query = query + "&roleid=" + roleid;
     if (moduleid != null) query = query + "&moduleid=" + moduleid;
-    if (operationid != null) query = query + "&operationid=" + operationid;
+    if (opetypeid != null) query = query + "&opetypeid=" + opetypeid;
 
     if (query != "") query = query.replace(/^./, "?")
 
@@ -467,4 +465,21 @@ export class OperationComponent {
       }
     });
   }
+
+  clear():void{
+    const confirm = this.dg.open(ConfirmComponent, {
+      width: '500px',
+      data: {
+        heading: "Confirmation - Clear Current Operation",
+        message: "Are you sure to clear following Details ? <br> <br>"
+      }
+    });
+
+    confirm.afterClosed().subscribe(async result => {
+      if (result) {
+        this.form.reset()
+      }
+    });
+  }
+
 }

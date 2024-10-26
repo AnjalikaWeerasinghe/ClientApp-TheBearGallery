@@ -35,7 +35,7 @@ import { PrivilegeComponent } from './view/modules/privilege/privilege.component
 import {JwtInterceptor} from "./service/JwtInterceptor";
 import {AuthorizationManager} from "./service/authorizationmanager";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
-import { OperationComponent } from './view/modules/operation/operation.component';
+import { OperationComponent } from './view/modules/operations/operation.component';
 import {MatMenuModule} from "@angular/material/menu";
 import {DashboardComponent} from './view/dashboard/dashboard.component';
 import {MatTooltipModule} from "@angular/material/tooltip";

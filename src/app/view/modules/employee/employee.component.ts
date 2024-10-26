@@ -110,10 +110,10 @@ export class EmployeeComponent {
       "gender": new FormControl('', [Validators.required]),
       "nic": new FormControl('', [Validators.required]),
       "dobirth": new FormControl('', [Validators.required]),
-      "photo": new FormControl('', [Validators.required]),
+      "photo": new FormControl(''),
       "address": new FormControl('', [Validators.required]),
       "contactmobile": new FormControl('', [Validators.required]),
-      "contactland": new FormControl('', ),
+      "contactland": new FormControl(''),
       "email": new FormControl('', [Validators.required]),
       "designation": new FormControl('', [Validators.required]),
       "country": new FormControl('', [Validators.required]),
@@ -176,10 +176,10 @@ export class EmployeeComponent {
     this.form.controls['gender'].setValidators([Validators.required]);
     this.form.controls['nic'].setValidators([Validators.required, Validators.pattern(this.regexes['nic']['regex'])]);
     this.form.controls['dobirth'].setValidators([Validators.required]);
-    this.form.controls['photo'].setValidators([Validators.required]);
+    this.form.controls['photo'].clearValidators();
     this.form.controls['address'].setValidators([Validators.required, Validators.pattern(this.regexes['address']['regex'])]);
     this.form.controls['contactmobile'].setValidators([Validators.required, Validators.pattern(this.regexes['contactmobile']['regex'])]);
-    this.form.controls['contactland'].setValidators([Validators.pattern(this.regexes['contactland']['regex'])]);
+    this.form.controls['contactland'].clearValidators();
     this.form.controls['email'].setValidators([Validators.required,Validators.pattern(this.regexes['email']['regex'])]);
     this.form.controls['designation'].setValidators([Validators.required]);
     this.form.controls['country'].setValidators([Validators.required]);
@@ -354,7 +354,7 @@ export class EmployeeComponent {
 
       let empdata: string = "";
 
-      empdata = empdata + "<br>Number is : " + this.employee.id;
+      empdata = empdata + "<br>Registration ID is : " + this.employee.regid;
       empdata = empdata + "<br>Fullname is : " + this.employee.fullname;
       empdata = empdata + "<br>Callingname is : " + this.employee.callingname;
 
@@ -377,15 +377,15 @@ export class EmployeeComponent {
             //console.log("Res-" + responce);
             //console.log("Un-" + responce == undefined);
             if (responce != undefined) { // @ts-ignore
-              console.log("Add-" + responce['id'] + "-" + responce['url'] + "-" + (responce['errors'] == ""));
+              // console.log("Add-" + responce['id'] + "-" + responce['url'] + "-" + (responce['errors'] == ""));
               // @ts-ignore
               addstatus = responce['errors'] == "";
-              console.log("Add Sta-" + addstatus);
+              // console.log("Add Sta-" + addstatus);
               if (!addstatus) { // @ts-ignore
                 addmessage = responce['errors'];
               }
             } else {
-              console.log("undefined");
+              // console.log("undefined");
               addstatus = false;
               addmessage = "Content Not Found"
             }
@@ -403,7 +403,7 @@ export class EmployeeComponent {
 
             const stsmsg = this.dg.open(MessageComponent, {
               width: '500px',
-              data: {heading: "Status -Employee Add", message: addmessage}
+              data: {heading: "Status - Employee Add", message: addmessage}
             });
 
             stsmsg.afterClosed().subscribe(async result => {
@@ -458,6 +458,8 @@ export class EmployeeComponent {
     this.employee.gender = this.genders.find(g => g.id === this.employee.gender.id);
     //@ts-ignore
     this.employee.designation = this.designations.find(d => d.id === this.employee.designation.id);
+    //@ts-ignore
+    this.employee.country = this.countries.find(g => g.id === this.employee.country.id);
     //@ts-ignore
     this.employee.empstatus = this.employeestatuses.find(s => s.id === this.employee.empstatus.id);
     //@ts-ignore

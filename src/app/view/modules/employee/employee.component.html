@@ -1,6 +1,6 @@
 <mat-grid-list [cols]="12" rowHeight="4rem">
 
-  <mat-grid-tile [colspan]="4" [rowspan]="10">
+  <mat-grid-tile [colspan]="4" [rowspan]="11">
     <mat-card>
       <mat-card-header>
         <mat-card-title>Employee Detail</mat-card-title>
@@ -127,7 +127,6 @@
         </mat-form>
       </mat-card-content>
 
-
     </mat-card>
   </mat-grid-tile>
 
@@ -157,6 +156,7 @@
             <input matInput formControlName="ssnic">
           </mat-form-field>
 
+          <br>
           <mat-form-field appearance="outline">
             <mat-label>Gender</mat-label>
             <mat-select formControlName="ssgender">
@@ -186,7 +186,7 @@
   </mat-grid-tile>
 
 
-  <mat-grid-tile [colspan]="8" [rowspan]="6">
+  <mat-grid-tile [colspan]="8" [rowspan]="7">
     <mat-card>
       <mat-card-header>
         <mat-card-title>Employee Table</mat-card-title>
@@ -222,7 +222,7 @@
 
         </mat-table>
 
-        <mat-paginator [length]="20" [pageSize]="3" [pageSizeOptions]="[3,5,10,20]"></mat-paginator>
+        <mat-paginator [length]="20" [pageSize]="5" [pageSizeOptions]="[5,10,20]"></mat-paginator>
 
       </mat-card-content>
 

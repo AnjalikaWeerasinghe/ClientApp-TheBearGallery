@@ -5,7 +5,7 @@ import {MainwindowComponent} from "./view/mainwindow/mainwindow.component";
 import {HomeComponent} from "./view/home/home.component";
 import {UserComponent} from "./view/modules/user/user.component";
 import {PrivilegeComponent} from "./view/modules/privilege/privilege.component";
-import {OperationComponent} from "./view/modules/operation/operation.component";
+import {OperationComponent} from "./view/modules/operations/operation.component";
 import {DashboardComponent} from "./view/dashboard/dashboard.component";
 import {MaterialComponent} from "./view/modules/material/material.component";
 import {EmployeeComponent} from "./view/modules/employee/employee.component";
@@ -30,7 +30,7 @@ const routes: Routes = [
       {path: "home", component: HomeComponent},
       {path: "dashboard", component: DashboardComponent},
       {path: "home/dashboard", redirectTo: 'dashboard', pathMatch: 'full'},
-      {path: "home/reports", redirectTo: 'report', pathMatch: 'full'},
+      {path: "home/report", redirectTo: 'report', pathMatch: 'full'},
       {path: "report", component: CountbydesignationComponent},
       {path: "dailyproduction", component: DailyproductionComponent},
       {path: "home/dailyproduction", redirectTo: 'dailyproduction', pathMatch: 'full'},
@@ -39,16 +39,17 @@ const routes: Routes = [
       {path: "user", component: UserComponent},
       {path:"privilege", component: PrivilegeComponent},
       {path: "home/privilege", redirectTo: 'privilege', pathMatch: 'full'},
-      {path:"operation",component:OperationComponent},
+      {path:"operations",component:OperationComponent},
+      {path: "home/operations", redirectTo: 'operations', pathMatch: 'full'},
       {path:"material",component:MaterialComponent},
-      {path: "home/material", redirectTo: 'material', pathMatch: 'full'},
+      {path: "home/material", redirectTo: 'materials', pathMatch: 'full'},
       {path:"product",component:ProductComponent},
-      {path: "home/product", redirectTo: 'product', pathMatch: 'full'},
+      {path: "home/product", redirectTo: 'products', pathMatch: 'full'},
       {path:"supplier",component:SupplierComponent},
-      {path: "home/supplier", redirectTo: 'supplier', pathMatch: 'full'},
+      {path: "home/supplier", redirectTo: 'suppliers', pathMatch: 'full'},
       {path:"purchaseorder",component:PurchaseorderComponent},
       {path:"customer",component:CustomerComponent},
-      {path: "home/customer", redirectTo: 'customer', pathMatch: 'full'},
+      {path: "home/customer", redirectTo: 'customers', pathMatch: 'full'},
       {path:"salesorder",component:SalesorderComponent},
       {path: "home/countbydesignation", redirectTo: 'countbydesignation', pathMatch: 'full'},
       {path:"countbydesignation",component:CountbydesignationComponent},

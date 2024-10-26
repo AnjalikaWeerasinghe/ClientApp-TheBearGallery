@@ -1,1 +1,160 @@
-<p>purchaseorder works!</p>
+<mat-grid-list [cols]="12" rowHeight="4rem">
+
+  <mat-grid-tile [colspan]="12" [rowspan]="8">
+
+    <mat-card>
+
+      <mat-card-header>
+        <mat-card-title>Purchase Order Detail Form</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content id="purchaseorderform">
+
+        <mat-form  [formGroup]="form" class="form-container">
+
+          <div class="form-section podetails">
+          <h2>Purchase Order Details</h2>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Purchase Order Number</mat-label>
+              <input matInput [value]="" formControlName="poid">
+              <!--            <mat-hint *ngIf="">{{}}</mat-hint>-->
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Purchase Order Date</mat-label>
+              <input matInput [matDatepicker]="regdate" formControlName="doorder">
+              <mat-datepicker-toggle matIconSuffix [for]="regdate"></mat-datepicker-toggle>
+              <mat-datepicker #regdate></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Order Created By</mat-label>
+              <mat-select formControlName="employee">
+                <mat-option [value]="null" selected>Not Selected</mat-option>
+                <mat-option *ngFor="let employee of employees" [value]="employees">{{employee.callingname}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Description</mat-label>
+              <input matInput formControlName="description">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Purchase Order Status</mat-label>
+              <mat-select formControlName="postatus">
+                <mat-option [value]="null" selected>Not Selected</mat-option>
+                <mat-option *ngFor="let postatus of postatuses" [value]="postatus">{{postatus.status}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Supplier Name</mat-label>
+              <mat-select formControlName="supplier">
+                <mat-option [value]="null" selected>Not Selected</mat-option>
+                <mat-option *ngFor="let supplier of suppliers" [value]="supplier">{{supplier.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+
+          <div class="form-section rawmaterials">
+          <h2>Material Details</h2>
+
+              <mat-form-field appearance="outline">
+              <mat-label>Material Name</mat-label>
+              <mat-select formControlName="material">
+                <mat-option [value]="null" selected>Not Selected</mat-option>
+                <mat-option *ngFor="let material of materials" [value]="material">{{material.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Quantity</mat-label>
+              <input matInput type="number" formControlName="quantity">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Unit Price</mat-label>
+              <input matInput type="number" formControlName="unitprice">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Total Price</mat-label>
+              <input matInput type="number" formControlName="totprice">
+            </mat-form-field>
+
+<!--            <button mat-button color="warn" (click)="removeMaterial(i)">Remove</button>-->
+              </div>
+
+      </mat-form>
+
+        <div id="butpanel">
+          <button mat-raised-button (click)="add()" [disabled]="!authService.getEnaAdd()">Add</button>
+          <button mat-raised-button (click)="clear()">Clear</button>
+          <button mat-raised-button (click)="update()" [disabled]="!authService.getEnaUpd()">Update</button>
+          <button mat-raised-button (click)="delete()" [disabled]="!authService.getEnaDel()">Delete</button>
+        </div>
+
+      </mat-card-content>
+
+    </mat-card>
+
+  </mat-grid-tile>
+
+  <mat-grid-tile [colspan]="12" [rowspan]="11">
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Purchase Order Table</mat-card-title>
+        <div id="loading">
+          <img [src]="imageurl">
+        </div>
+      </mat-card-header>
+
+      <mat-card-content>
+
+        <mat-form [formGroup]="search" id="search">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Search by Purchase Order ID</mat-label>
+            <input matInput formControlName="sspoid">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Purchase Order Status</mat-label>
+            <mat-select formControlName="sspostatus">
+              <mat-option [value]="null" selected>Not Selected</mat-option>
+              <mat-option *ngFor="let postatus of postatuses" [value]="postatus.id">{{postatus.status}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div>
+            <button mat-raised-button (click)="btnSearchMc()" id="btnsearch"><mat-icon>search</mat-icon> Search </button>
+            <button mat-raised-button (click)="btnSearchClearMc()" id="btnclearsearch"><mat-icon>reorder</mat-icon> Clear Search </button>
+          </div>
+
+        </mat-form>
+
+        <mat-table [dataSource]="data">
+
+          <ng-container *ngFor="let column of columns;let i = index;" [matColumnDef]="column">
+            <mat-header-cell *matHeaderCellDef> {{headers[i]}} </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ uiassist.getProperty(element, binders[i]) }} </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+
+          <mat-row *matRowDef="let row; columns: columns;" (click)="fillForm(row, 'loadMaterials')" [ngClass]="{'selected-row': row === selectedrow}"></mat-row>
+
+        </mat-table>
+
+        <mat-paginator [length]="20" [pageSize]="5" [pageSizeOptions]="[5,10,20]"></mat-paginator>
+
+      </mat-card-content>
+
+    </mat-card>
+  </mat-grid-tile>
+
+</mat-grid-list>
